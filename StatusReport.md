@@ -19,7 +19,7 @@
 
 <h2>Current Progress</h2>
 
-<p>So far for the project, we have acquired the datasets that we will use. We acquired the data from Kaggle, which was sourced from the NYC Department of Health and the City of New York, from NYC Open Data. We evaluated the data based on the FAIR guiding principles to determine if the data is findable, accessible, interoperable, and reusable. We determined that both datasets score well within the FAIR guiding principles because the data is publically available from the city of New York, has DOIs, is free to download, uses common vocabulary for integration, and contains information about metadata. We used OpenRefine to clean the datasets. After cleaning the data using OpenRefine, we picked the specific columns we wanted to look at within each dataset and integrated the two datasets using Python.</p>
+<p>So far for the project, we have acquired the datasets that we will use. We acquired the data from Kaggle, which was sourced from the NYC Department of Health and the City of New York, from NYC Open Data. We downloaded these datasets directly from Kaggle. We evaluated the data based on the FAIR guiding principles to determine if the data is findable, accessible, interoperable, and reusable. We determined that both datasets score well within the FAIR guiding principles because the data is publically available from the city of New York, has DOIs, is free to download, uses common vocabulary for integration, and contains information about metadata. We used OpenRefine to clean the datasets. After cleaning the data using OpenRefine, we picked the specific columns we wanted to look at within each dataset and integrated the two datasets using Python.</p>
 
 <h2>Updated Timeline</h2>
 
