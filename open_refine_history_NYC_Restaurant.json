@@ -1,0 +1,5704 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "ZIPCODE",
+    "expression": "grel:cell.cross(\"us valid zips\", \"zip\")[0].cells[\"zip\"].value",
+    "onError": "set-to-blank",
+    "newColumnName": "matched_zip",
+    "columnInsertIndex": 6,
+    "description": "Create column matched_zip at index 6 based on column ZIPCODE using expression grel:cell.cross(\"us valid zips\", \"zip\")[0].cells[\"zip\"].value"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "matched_zip",
+          "expression": "isBlank(value)",
+          "columnName": "matched_zip",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "matched_zip",
+    "description": "Remove column matched_zip"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DBA",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DBA using expression value.toTitlecase()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DBA",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Dunkin' Donuts, Baskin Robbins",
+          "Dunkin' Donuts/ Baskin Robbins",
+          "Dunkin Donuts & Baskin Robbins",
+          "Dunkin Donuts Baskin Robbins",
+          "Dunkin' Donuts Baskin Robbins",
+          "Dunkin' Donuts - Baskin Robbins"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Dunkin Donuts & Baskin Robbins"
+      },
+      {
+        "from": [
+          "Dunkin' Donuts/baskin Robbins",
+          "Dunkin' Donuts-baskin Robbins",
+          "Dunkin Donuts,baskin Robbins",
+          "Dunkin Donuts-baskin Robbins"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Dunkin Donuts & Baskin Robbins"
+      },
+      {
+        "from": [
+          "Dunkin' Donuts",
+          "Dunkin Donuts",
+          "Dunkin'  Donuts",
+          "Dunkin\u001a Donuts"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Dunkin' Donuts"
+      },
+      {
+        "from": [
+          "U.S. Kennedy Fried Chicken Pizza",
+          "Us Kennedy Fried Chicken & Pizza",
+          "Us Kennedy Fried Chicken Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "U.S. Kennedy Fried Chicken Pizza"
+      },
+      {
+        "from": [
+          "Little Caesars",
+          "Little  Caesars",
+          "Little Caesar's"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Little Caesars"
+      },
+      {
+        "from": [
+          "Xi'an Famous Foods",
+          "Xian Famous Foods"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Xi'an Famous Foods"
+      },
+      {
+        "from": [
+          "Fresh & Co",
+          "Fresh & Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Fresh & Co."
+      },
+      {
+        "from": [
+          "Uncle Jacks Steakhouse",
+          "Uncle Jack's Steakhouse"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Uncle Jack's Steakhouse"
+      },
+      {
+        "from": [
+          "Texas Chicken & Burgers",
+          "Texas Chicken& Burgers"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Texas Chicken & Burgers"
+      },
+      {
+        "from": [
+          "Spice Grill",
+          "Spice & Grill"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Spice & Grill"
+      },
+      {
+        "from": [
+          "Bento Sushi",
+          "Sushi Bento"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Wasabi Sushi & Bento"
+      },
+      {
+        "from": [
+          "Jimmys Pizza",
+          "Jimmy's Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jimmy's Pizza"
+      },
+      {
+        "from": [
+          "Kennedy Chicken & Pizza",
+          "Kennedy Pizza & Chicken"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Kennedy Chicken & Pizza"
+      },
+      {
+        "from": [
+          "King's Pizza",
+          "Kings Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "King's Pizza"
+      },
+      {
+        "from": [
+          "Oaxaca Taqueria",
+          "Taqueria Oaxaca"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Oaxaca Taqueria"
+      },
+      {
+        "from": [
+          "28 Noodles",
+          "Noodles 28"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "28 Noodles"
+      },
+      {
+        "from": [
+          "Woops! Bakeshop",
+          "Woops Bakeshop"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Woops! Bakeshop"
+      },
+      {
+        "from": [
+          "Yummy Yummy Express",
+          "Yummy Express"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Yummy Yummy Chinese Restaurant"
+      },
+      {
+        "from": [
+          "Pizza Mia",
+          "Mia Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pizza Mia"
+      },
+      {
+        "from": [
+          "Europa Cafe",
+          "Cafe Europa"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Europa Cafe"
+      },
+      {
+        "from": [
+          "Barry's Bootcamp",
+          "Barrys Bootcamp"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Barry's Bootcamp"
+      },
+      {
+        "from": [
+          "Andrew's Coffee Shop",
+          "Andrews Coffee Shop"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Andrew's Coffee Shop"
+      },
+      {
+        "from": [
+          "Mamas Empanadas",
+          "Mama's Empanadas"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mama's Empanadas"
+      },
+      {
+        "from": [
+          "Mmm...Thats A Wrap",
+          "Mmm...That's A Wrap"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mmm...Thats A Wrap"
+      },
+      {
+        "from": [
+          "John's Pizza",
+          "Johns Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "John's Pizza"
+      },
+      {
+        "from": [
+          "Birdbath Neighborhood Green Bakery",
+          "Birdbath  Neighborhood Green Bakery"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Birdbath Neighborhood Green Bakery"
+      },
+      {
+        "from": [
+          "Brother's Pizza Two",
+          "Two Brothers Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "2 Bros Pizza"
+      },
+      {
+        "from": [
+          "Lj Pizza",
+          "L.J. Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Lj's Pizza"
+      },
+      {
+        "from": [
+          "King Food",
+          "Food King"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Food King"
+      },
+      {
+        "from": [
+          "L.A. Gourmet",
+          "La Gourmet"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "L.A. Gourmet"
+      },
+      {
+        "from": [
+          "Us Fried Chicken",
+          "U.S. Fried Chicken"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "U.S. Kennedy Fried Chicken Pizza"
+      },
+      {
+        "from": [
+          "Wasabi Sushi Bento",
+          "Wasabi Sushi & Bento"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Wasabi Sushi & Bento"
+      },
+      {
+        "from": [
+          "Wimpy's Restaurant",
+          "Wimpys Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Wimpy's Restaurant"
+      },
+      {
+        "from": [
+          "Something Sweet",
+          "Something  Sweet"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Something Sweet"
+      },
+      {
+        "from": [
+          "Peppas Jerk Chicken Restaurant",
+          "Peppa's Jerk Chicken Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Peppa's Jerk Chicken Restaurant"
+      },
+      {
+        "from": [
+          "Cibo Express Gourmet Market",
+          "Cibo  Express Gourmet Market"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cibo Express Gourmet Market"
+      },
+      {
+        "from": [
+          "Lenny's Pizza",
+          "Lennys Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Lenny's Pizza"
+      },
+      {
+        "from": [
+          "Restaurant Associates Inc",
+          "Restaurant Associates, Inc"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Restaurant Associates, Inc"
+      },
+      {
+        "from": [
+          "Cafe Paris",
+          "Paris Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe Paris"
+      },
+      {
+        "from": [
+          "Martha's Country Bakery",
+          "Marthas Country Bakery"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Martha's Country Bakery"
+      },
+      {
+        "from": [
+          "Hana Sushi",
+          "Sushi Hana"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hana Sushi"
+      },
+      {
+        "from": [
+          "Mr. Wish",
+          "Mr Wish"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mr. Wish"
+      },
+      {
+        "from": [
+          "Halal Pizza & Fried Chicken",
+          "Halal Fried Chicken & Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Halal Pizza & Fried Chicken"
+      },
+      {
+        "from": [
+          "American Airlines Admirals Club",
+          "American Airlines Admiral's Club"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "American Airlines Admirals Club"
+      },
+      {
+        "from": [
+          "La Abundancia Bakery & Restaurant",
+          "La Abundancia Restaurant & Bakery"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "La Abundancia Bakery & Restaurant"
+      },
+      {
+        "from": [
+          "Cascarino's",
+          "Cascarinos"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cascarino's"
+      },
+      {
+        "from": [
+          "Y Cafe",
+          "Cafe Y"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Y Cafe"
+      },
+      {
+        "from": [
+          "Cafe O'",
+          "O' Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe O'"
+      },
+      {
+        "from": [
+          "Mikes Pizza",
+          "Mike's Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mikes' Pizza"
+      },
+      {
+        "from": [
+          "King's Kitchen",
+          "Kings Kitchen"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "King's Kitchen"
+      },
+      {
+        "from": [
+          "Jimbo's Hamburger",
+          "Jimbos Hamburger"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jimbo's Hamburger"
+      },
+      {
+        "from": [
+          "Jaiya Thai Oriental Restaurant",
+          "Jaiya Thai & Oriental Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jaiya Thai Oriental Restaurant"
+      },
+      {
+        "from": [
+          "Palace  Chicken & Grill",
+          "Palace Chicken & Grill"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Palace Chicken & Grill"
+      },
+      {
+        "from": [
+          "I-ce-ny",
+          "I.Ce.Ny"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "I CE NY"
+      },
+      {
+        "from": [
+          "Texas New Fried Chicken",
+          "New Texas Fried Chicken"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Texas New Fried Chicken"
+      },
+      {
+        "from": [
+          "Good Taste Restaurant",
+          "Taste Good Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Good Taste Restaurant"
+      },
+      {
+        "from": [
+          "Tony's Pizzeria",
+          "Tonys Pizzeria"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Tony's Pizzeria"
+      },
+      {
+        "from": [
+          "Empire Kitchen",
+          "Empire Kitchen ."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Empire Kitchen"
+      },
+      {
+        "from": [
+          "Juice Press @ Equinox",
+          "Juice Press @equinox"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Juice Press @ Equinox"
+      },
+      {
+        "from": [
+          "Nino's Restaurant",
+          "Ninos Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Nino's Restaurant"
+      },
+      {
+        "from": [
+          "Texas Chicken &burger",
+          "Texas Chicken & Burger"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Texas Chicken & Burgers"
+      },
+      {
+        "from": [
+          "Cafe 101",
+          "101 Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe 101"
+      },
+      {
+        "from": [
+          "Joe & The Juice",
+          "Joe The Juice"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Joe & The Juice"
+      },
+      {
+        "from": [
+          "Pig N Whistle",
+          "Pig 'n' Whistle"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pig N Whistle"
+      },
+      {
+        "from": [
+          "Metropolitan Club",
+          "Club Metropolitan"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Metropolitan Club"
+      },
+      {
+        "from": [
+          "Popeyes",
+          "Popeye's"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Popeye's Louisiana Kitchen"
+      },
+      {
+        "from": [
+          "Mr. Demus Fishnet Restaurant",
+          "Mr Demus Fishnet Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mr. Demus Fishnet Restaurant"
+      },
+      {
+        "from": [
+          "Jack's Coffee",
+          "Jacks Coffee"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jack's Coffee"
+      },
+      {
+        "from": [
+          "Schnippers",
+          "Schnipper's"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Schnipper's"
+      },
+      {
+        "from": [
+          "Popeyes Louisiana Kitchen",
+          "Popeye's Louisiana Kitchen"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Popeye's Louisiana Kitchen"
+      },
+      {
+        "from": [
+          "Mcdonald's",
+          "Mcdonalds"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mcdonald's"
+      },
+      {
+        "from": [
+          "Junior's",
+          "Juniors"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Junior's"
+      },
+      {
+        "from": [
+          "Tim Hortons",
+          "Tim Horton's"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Tim Horton's"
+      },
+      {
+        "from": [
+          "Taco Bell Pizza Hut Express",
+          "Taco Bell, Pizza Hut Express"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Taco Bell & Pizza Hut Express"
+      },
+      {
+        "from": [
+          "Bella Pizza",
+          "Pizza Bella"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Bella Pizza"
+      },
+      {
+        "from": [
+          "Panini Tozt C.A.F.E",
+          "Panini Tozt Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Panini Tozt C.A.F.E"
+      },
+      {
+        "from": [
+          "Pierre Loti Cafe Wine Bar",
+          "Pierre Loti Cafe & Wine Bar"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pierre Loti Cafe Wine Bar"
+      },
+      {
+        "from": [
+          "Insomnia Cookies",
+          "Insomnia  Cookies"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Insomnia Cookies"
+      },
+      {
+        "from": [
+          "Joe:the Art Of Coffee",
+          "Joe-the Art Of Coffee"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Joe: the Art Of Coffee"
+      },
+      {
+        "from": [
+          "Pizza Prince",
+          "Prince Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pizza Prince"
+      },
+      {
+        "from": [
+          "Dahlias Fine Mexican Cuisine",
+          "Dahlia's Fine Mexican Cuisine"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Dahlia's Fine Mexican Cuisine"
+      },
+      {
+        "from": [
+          "New Golden Restaurant",
+          "New Golden  Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "New Golden Restaurant"
+      },
+      {
+        "from": [
+          "Patsy's Pizzeria",
+          "Patsys Pizzeria"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Patsy's Pizzeria"
+      },
+      {
+        "from": [
+          "New No 1 Chinese Restaurant",
+          "New No. 1 Chinese Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "No. 1 Chinese Restaurant"
+      },
+      {
+        "from": [
+          "Gino's Restaurant & Pizzeria",
+          "Gino's Pizzeria Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Gino's Restaurant & Pizzeria"
+      },
+      {
+        "from": [
+          "Sophie's Cuban Cuisine",
+          "Sophies Cuban Cuisine"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Sophie's Cuban Cuisine"
+      },
+      {
+        "from": [
+          "Blockhead's Burritos",
+          "Blockheads Burritos"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Blockhead's Burritos"
+      },
+      {
+        "from": [
+          "Kennedy Fried Chicken",
+          "Kennedy  Fried Chicken"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "U.S. Kennedy Fried Chicken Pizza"
+      },
+      {
+        "from": [
+          "Crown Fried Chicken & Pizza",
+          "Crown Fried Chicken Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Crown Fried Chicken & Pizza"
+      },
+      {
+        "from": [
+          "Mcdonald's Restaurant",
+          "Mcdonalds Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mcdonald's"
+      },
+      {
+        "from": [
+          "Good Good Taste",
+          "Good Taste"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Good Good Taste"
+      },
+      {
+        "from": [
+          "Auntie Anne's",
+          "Auntie Annes"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Auntie Anne's"
+      },
+      {
+        "from": [
+          "Pizza King",
+          "King Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pizza King"
+      },
+      {
+        "from": [
+          "J 's Pizza",
+          "J & S Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "J 's Pizza"
+      },
+      {
+        "from": [
+          "Pizza Italia",
+          "Italia Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pizza Italia"
+      },
+      {
+        "from": [
+          "Pinot's Palette",
+          "Pinots Palette"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pinot's Palette"
+      },
+      {
+        "from": [
+          "Kabab King",
+          "King Kabab"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Kabab King"
+      },
+      {
+        "from": [
+          "Tower's Cafe",
+          "Towers Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Tower's Cafe"
+      },
+      {
+        "from": [
+          "Cafe Arte",
+          "Arte Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe Arte"
+      },
+      {
+        "from": [
+          "Luigis Pizzeria",
+          "Luigi's Pizzeria"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Luigi's Pizzeria"
+      },
+      {
+        "from": [
+          "Original Mama's Empanadas",
+          "Original Mamas Empanadas"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Original Mama's Empanadas"
+      },
+      {
+        "from": [
+          "Frank's Pizza",
+          "Franks Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Frank's Pizza"
+      },
+      {
+        "from": [
+          "Patrizia's Of Brooklyn",
+          "Patrizias Of Brooklyn"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Patrizia's Of Brooklyn"
+      },
+      {
+        "from": [
+          "Burger King, Popeyes Louisiana Kitchen",
+          "Burger King, Burger King, Popeyes Louisiana Kitchen"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Burger King & Popeye's Louisiana Kitchen"
+      },
+      {
+        "from": [
+          "Hampton Chutney, Co.",
+          "Hampton Chutney Co"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hampton Chutney, Co."
+      },
+      {
+        "from": [
+          "Chen's Garden",
+          "Chens Garden"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Chen's Garden"
+      },
+      {
+        "from": [
+          "2 Bros Pizza",
+          "2 Bro's Pizza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "2 Bros Pizza"
+      },
+      {
+        "from": [
+          "King's Wok",
+          "Kings Wok"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "King's Wok"
+      },
+      {
+        "from": [
+          "Soldier Restaurant & Buffet",
+          "Soldier Restaurant Buffet"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Soldier Restaurant & Buffet"
+      },
+      {
+        "from": [
+          "Fresh Tortillas Grill",
+          "Grill Fresh Tortillas"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Fresh Tortillas Grill"
+      },
+      {
+        "from": [
+          "Vegetarian Ginger",
+          "Ginger Vegetarian"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Vegetarian Ginger"
+      },
+      {
+        "from": [
+          "No. 1 Chinese Restaurant",
+          "No 1 Chinese Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "No. 1 Chinese Restaurant"
+      },
+      {
+        "from": [
+          "Bens Cookies",
+          "Ben's Cookies"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Bens Cookies"
+      },
+      {
+        "from": [
+          "No. 1 Restaurant",
+          "No 1 Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "No. 1 Chinese Restaurant"
+      },
+      {
+        "from": [
+          "New York Burger Co",
+          "New York Burger Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "New York Burger Co."
+      },
+      {
+        "from": [
+          "Mezcal's Restaurant",
+          "Mezcals Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mezcal's Restaurant"
+      },
+      {
+        "from": [
+          "Yummy Chinese Restaurant",
+          "Yummy Yummy Chinese Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Yummy Yummy Chinese Restaurant"
+      },
+      {
+        "from": [
+          "Azoguenita  Bakery & Restaurant",
+          "Azoguenita Bakery & Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Azoguenita Bakery & Restaurant"
+      },
+      {
+        "from": [
+          "Uncle Louie G\u001as Italian Ices & Ice Cream",
+          "Uncle Louie G's Italian Ices & Ice Cream"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Uncle Louie G's Italian Ices & Ice Cream"
+      },
+      {
+        "from": [
+          "Eggers Ice Cream Parlor",
+          "Egger's Ice Cream Parlor"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Eggers Ice Cream Parlor"
+      },
+      {
+        "from": [
+          "Vip Club",
+          "V.I.P. Club"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Vip Club"
+      },
+      {
+        "from": [
+          "Vive La Crepe",
+          "Vive La Crepe!"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Vive La Crepe"
+      },
+      {
+        "from": [
+          "Emack & Bolios",
+          "Emack & Bolio's"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Emack & Bolios"
+      },
+      {
+        "from": [
+          "Haagen Dazs",
+          "Haagen - Dazs"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Haagen Dazs"
+      },
+      {
+        "from": [
+          "Kfc, Taco Bell",
+          "Taco Bell, Kfc"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Kfc, Taco Bell"
+      },
+      {
+        "from": [
+          "Gregory's Coffee",
+          "Gregorys Coffee"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Gregory's Coffee"
+      },
+      {
+        "from": [
+          "George's Restaurant",
+          "Georges Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "George's Restaurant"
+      },
+      {
+        "from": [
+          "Papa John's",
+          "Papa Johns"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Papa John's"
+      },
+      {
+        "from": [
+          "Chicken Perfect!",
+          "Chicken Perfect"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Chicken Perfect!"
+      },
+      {
+        "from": [
+          "King's Chef",
+          "Kings Chef"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "King's Chef"
+      },
+      {
+        "from": [
+          "Denino's Pizzeria Tavern",
+          "Denino's Pizzeria & Tavern"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Denino's Pizzeria Tavern"
+      },
+      {
+        "from": [
+          "Benny's",
+          "Bennys"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Benny's"
+      },
+      {
+        "from": [
+          "U.S Kennedy Fried Chicken",
+          "Us Kennedy Fried Chicken"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "U.S. Kennedy Fried Chicken Pizza"
+      },
+      {
+        "from": [
+          "Whitman's",
+          "Whitmans"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Whitman's"
+      },
+      {
+        "from": [
+          "Cafe Olympia",
+          "Olympia Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe Olympia"
+      },
+      {
+        "from": [
+          "Cafe Metro",
+          "Metro Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe Metro"
+      },
+      {
+        "from": [
+          "Mcfadden's",
+          "Mcfaddens"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mcfadden's"
+      },
+      {
+        "from": [
+          "Madison Cafe",
+          "Cafe Madison"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Madison Cafe"
+      },
+      {
+        "from": [
+          "Pete's Restaurant & Pizzeria",
+          "Petes Pizzeria & Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pete's Restaurant & Pizzeria"
+      },
+      {
+        "from": [
+          "Billy's Pizza Pasta",
+          "Billy's Pizza & Pasta"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Billy's Pizza Pasta"
+      },
+      {
+        "from": [
+          "No.1 Chinese Restaurant",
+          "Chinese No.1 Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "No.1 Chinese Restaurant"
+      },
+      {
+        "from": [
+          "Hersheys Ice Cream",
+          "Hershey's Ice Cream"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hershey's Ice Cream"
+      },
+      {
+        "from": [
+          "Sushi Yu",
+          "Yu Sushi"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Sushi Yu"
+      },
+      {
+        "from": [
+          "Checkers",
+          "Checker's"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Checkers"
+      },
+      {
+        "from": [
+          "Cafe Champignon",
+          "Champignon Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe Champignon"
+      },
+      {
+        "from": [
+          "99 Cents Fresh Pizza",
+          "Fresh Pizza 99 Cents"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "99 Cents Fresh Pizza"
+      },
+      {
+        "from": [
+          "Wichcraft",
+          "'wichcraft"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Wichcraft"
+      },
+      {
+        "from": [
+          "People's Pop's",
+          "People's Pops"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "People's Pop's"
+      },
+      {
+        "from": [
+          "Justino's Pizzeria",
+          "Justinos Pizzeria"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Justino's Pizzeria"
+      }
+    ],
+    "description": "Mass edit cells in column DBA"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DBA",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Joe: The Art Of Coffee",
+          "Joe: the Art Of Coffee"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Joe: The Art Of Coffee"
+      },
+      {
+        "from": [
+          "I CE NY",
+          "I Ce Ny"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "I CE NY"
+      }
+    ],
+    "description": "Mass edit cells in column DBA"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BORO",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BORO using expression value.toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value.toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression value.toTitlecase()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "East   57 Street",
+          "East 57 Street",
+          "East  57 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 57 Street"
+      },
+      {
+        "from": [
+          "Jfk Int'l Airport",
+          "Jfk Intl Airport",
+          "Jfk Intl. Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "John F. Kennedy Intl Airport"
+      },
+      {
+        "from": [
+          "East   23 Street",
+          "East   23  Street",
+          "East 23 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 23 Street"
+      },
+      {
+        "from": [
+          "West   10 Street",
+          "West 10 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 10 Street"
+      },
+      {
+        "from": [
+          "West   14 Street",
+          "West 14 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 14 Street"
+      },
+      {
+        "from": [
+          "East    8 Street",
+          "East 8 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 8 Street"
+      },
+      {
+        "from": [
+          "East    4 Street",
+          "East 4 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 4 Street"
+      },
+      {
+        "from": [
+          "West   21 Street",
+          "West 21 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 21 Street"
+      },
+      {
+        "from": [
+          "Jerome Ave",
+          "Jerome  Ave"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jerome Ave"
+      },
+      {
+        "from": [
+          "Coop City Boulevard",
+          "Co-op City Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Coop City Boulevard"
+      },
+      {
+        "from": [
+          "East  169 Street",
+          "East 169 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 169 Street"
+      },
+      {
+        "from": [
+          "W 58th Street",
+          "W. 58th Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 58 Street"
+      },
+      {
+        "from": [
+          "East  161 Street",
+          "East 161 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 161 Street"
+      },
+      {
+        "from": [
+          "East  187 Street",
+          "East 187 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 187 Street"
+      },
+      {
+        "from": [
+          "E 60th St",
+          "E. 60th St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 60 Street"
+      },
+      {
+        "from": [
+          "North    6 Street",
+          "North 6 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "North 6 Street"
+      },
+      {
+        "from": [
+          "West   72 Street",
+          "West 72 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 72 Street"
+      },
+      {
+        "from": [
+          "West   50 Street",
+          "West 50 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 50 Street"
+      },
+      {
+        "from": [
+          "E. 17th St.",
+          "E 17th St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 17 Street"
+      },
+      {
+        "from": [
+          "West  125 Street",
+          "West 125 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 125 Street"
+      },
+      {
+        "from": [
+          "E Broadway",
+          "E. Broadway"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East Broadway"
+      },
+      {
+        "from": [
+          "East   28 Street",
+          "East 28 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 28 Street"
+      },
+      {
+        "from": [
+          "W Burnside Ave",
+          "W. Burnside Ave"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West Burnside Ave"
+      },
+      {
+        "from": [
+          "East   21 Street",
+          "East 21 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 21 Street"
+      },
+      {
+        "from": [
+          "East   36 Street",
+          "East 36 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 36 Street"
+      },
+      {
+        "from": [
+          "East   43 Street",
+          "East 43 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 43 Street"
+      },
+      {
+        "from": [
+          "East   47 Street",
+          "East 47 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 47 Street"
+      },
+      {
+        "from": [
+          "East   13 Street",
+          "East 13 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 13 Street"
+      },
+      {
+        "from": [
+          "Franklin St",
+          "Franklin St."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Franklin Street"
+      },
+      {
+        "from": [
+          "East   10 Street",
+          "East 10 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 10 Street"
+      },
+      {
+        "from": [
+          "East   98 Street",
+          "East 98 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 98 Street"
+      },
+      {
+        "from": [
+          "East   46 Street",
+          "East 46 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 46 Street"
+      },
+      {
+        "from": [
+          "East   14 Street",
+          "East 14 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 14 Street"
+      },
+      {
+        "from": [
+          "East   39 Street",
+          "East 39 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 39 Street"
+      },
+      {
+        "from": [
+          "Christie St",
+          "Christie St."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Christie Street"
+      },
+      {
+        "from": [
+          "John F. Kennedy Intl Airport",
+          "John F Kennedy Intl Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "John F. Kennedy Intl Airport"
+      },
+      {
+        "from": [
+          "St Johns Place",
+          "St John's Place"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "St John's Place"
+      },
+      {
+        "from": [
+          "East   76 Street",
+          "East 76 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 76 Street"
+      },
+      {
+        "from": [
+          "South    4 Street",
+          "South 4 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "South 4 Street"
+      },
+      {
+        "from": [
+          "Havemeyer St",
+          "Havemeyer  St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Havemeyer Street"
+      },
+      {
+        "from": [
+          "East   54 Street",
+          "East 54 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 54 Street"
+      },
+      {
+        "from": [
+          "East    1 Street",
+          "East 1 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 1 Street"
+      },
+      {
+        "from": [
+          "West   15 Street",
+          "West 15 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 15 Street"
+      },
+      {
+        "from": [
+          "West   13 Street",
+          "West 13 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 13 Street"
+      },
+      {
+        "from": [
+          "W 57th St",
+          "W. 57th St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 57 Street"
+      },
+      {
+        "from": [
+          "West   40 Street",
+          "West 40 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 40 Street"
+      },
+      {
+        "from": [
+          "St Nicholas Ave",
+          "St. Nicholas Ave"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "St Nicholas Ave"
+      },
+      {
+        "from": [
+          "West   46 Street",
+          "West 46 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 46 Street"
+      },
+      {
+        "from": [
+          "St Nicholas Avenue",
+          "St. Nicholas Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "St Nicholas Ave"
+      },
+      {
+        "from": [
+          "West   51 Street",
+          "West 51 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 51 Street"
+      },
+      {
+        "from": [
+          "West   35 Street",
+          "West 35 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 35 Street"
+      },
+      {
+        "from": [
+          "East    7 Street",
+          "East 7 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 7 Street"
+      },
+      {
+        "from": [
+          "West   24 Street",
+          "West 24 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 24 Street"
+      },
+      {
+        "from": [
+          "W. 9th St",
+          "W 9th St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 9 Street"
+      },
+      {
+        "from": [
+          "Wythe Ave",
+          "Wythe Ave."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Wythe Ave"
+      },
+      {
+        "from": [
+          "East   58 Street",
+          "East 58 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 58 Street"
+      },
+      {
+        "from": [
+          "East    5 Street",
+          "East 5 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 5 Street"
+      },
+      {
+        "from": [
+          "East   30 Street",
+          "East 30 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 30 Street"
+      },
+      {
+        "from": [
+          "West    4 Street",
+          "West 4 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 4 Street"
+      },
+      {
+        "from": [
+          "West 225 Street",
+          "West  225 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 225 Street"
+      },
+      {
+        "from": [
+          "East   55 Street",
+          "East 55 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 55 Street"
+      },
+      {
+        "from": [
+          "East   19 Street",
+          "East 19 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 19 Street"
+      },
+      {
+        "from": [
+          "Roosevelt Ave",
+          "Roosevelt Ave."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Roosevelt Ave"
+      },
+      {
+        "from": [
+          "Jfk International Airport",
+          "Jfk  International Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "John F. Kennedy Intl Airport"
+      },
+      {
+        "from": [
+          "East   52 Street",
+          "East 52 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 52 Street"
+      },
+      {
+        "from": [
+          "West   79 Street",
+          "West 79 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 79 Street"
+      },
+      {
+        "from": [
+          "East  180 Street",
+          "East 180 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 180 Street"
+      },
+      {
+        "from": [
+          "Little West   12 Street",
+          "Little West 12 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Little West 12 Street"
+      },
+      {
+        "from": [
+          "East   85 Street",
+          "East 85 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 85 Street"
+      },
+      {
+        "from": [
+          "West   57 Street",
+          "West 57 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 57 Street"
+      },
+      {
+        "from": [
+          "West   54 Street",
+          "_west   54 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 54 Street"
+      },
+      {
+        "from": [
+          "West   32 Street",
+          "West 32 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 32 Street"
+      },
+      {
+        "from": [
+          "East   82 Street",
+          "East 82 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 82 Street"
+      },
+      {
+        "from": [
+          "West   43 Street",
+          "West 43 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 43 Street"
+      },
+      {
+        "from": [
+          "West   27 Street",
+          "West 27 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 27 Street"
+      },
+      {
+        "from": [
+          "Saint Marks Place",
+          "Saint Mark's Place"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Saint Marks Place"
+      },
+      {
+        "from": [
+          "East    6 Street",
+          "East 6 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 6 Street"
+      },
+      {
+        "from": [
+          "2nd Avenue",
+          "2nd  Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "2nd Ave"
+      },
+      {
+        "from": [
+          "West   23 Street",
+          "West 23 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 23 Street"
+      },
+      {
+        "from": [
+          "East  149 Street",
+          "East 149 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 149 Street"
+      },
+      {
+        "from": [
+          "West   49 Street",
+          "West 49 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 49 Street"
+      },
+      {
+        "from": [
+          "West   38 Street",
+          "West 38 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 38 Street"
+      },
+      {
+        "from": [
+          "West   56 Street",
+          "West 56 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 56 Street"
+      },
+      {
+        "from": [
+          "West   34 Street",
+          "West 34 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 34 Street"
+      },
+      {
+        "from": [
+          "Beach  116 Street",
+          "Beach 116 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Beach 116 Street"
+      },
+      {
+        "from": [
+          "West 41 Street",
+          "West   41 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 41 Street"
+      },
+      {
+        "from": [
+          "West   45 Street",
+          "West 45 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 45 Street"
+      },
+      {
+        "from": [
+          "Church Ave",
+          "Church Ave."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Church Ave"
+      },
+      {
+        "from": [
+          "West   70 Street",
+          "West 70 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 70 Street"
+      },
+      {
+        "from": [
+          "West  145 Street",
+          "West 145 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 145 Street"
+      },
+      {
+        "from": [
+          "East  167 Street",
+          "East 167 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 167 Street"
+      },
+      {
+        "from": [
+          "East  170 Street",
+          "East 170 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 170 Street"
+      },
+      {
+        "from": [
+          "East   33 Street",
+          "East 33 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 33 Street"
+      },
+      {
+        "from": [
+          "East   27 Street",
+          "East 27 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 27 Street"
+      },
+      {
+        "from": [
+          "W 45th St",
+          "W. 45th St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 45 Street"
+      },
+      {
+        "from": [
+          "East   51 Street",
+          "East 51 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 51 Street"
+      },
+      {
+        "from": [
+          "East   11 Street",
+          "East 11 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 11 Street"
+      },
+      {
+        "from": [
+          "North    3 Street",
+          "North 3 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "North 3 Street"
+      },
+      {
+        "from": [
+          "E 174th St",
+          "E  174th St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 174 Street"
+      },
+      {
+        "from": [
+          "Union Sq. W",
+          "Union Sq W"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Union Sq. West"
+      },
+      {
+        "from": [
+          "West  168 Street",
+          "West 168 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 168 Street"
+      },
+      {
+        "from": [
+          "W 8th Street",
+          "W. 8th Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 8 Street"
+      },
+      {
+        "from": [
+          "North    7 Street",
+          "North 7 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "North 7 Street"
+      },
+      {
+        "from": [
+          "East  163 Street",
+          "East 163 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 163 Street"
+      },
+      {
+        "from": [
+          "Astoria Boulevard",
+          "_astoria Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Astoria Boulevard"
+      },
+      {
+        "from": [
+          "East  174 Street",
+          "East 174 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 174 Street"
+      },
+      {
+        "from": [
+          "@ Grand Central",
+          "& Grand Central"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "@ Grand Central"
+      },
+      {
+        "from": [
+          "West   26 Street",
+          "West 26 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 26 Street"
+      },
+      {
+        "from": [
+          "West   17 Street",
+          "West 17 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 17 Street"
+      },
+      {
+        "from": [
+          "Beach   20 Street",
+          "Beach 20 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Beach 20 Street"
+      },
+      {
+        "from": [
+          "Beach  129 Street",
+          "Beach 129 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Beach 129 Street"
+      },
+      {
+        "from": [
+          "West   11 Street",
+          "West 11 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 11 Street"
+      },
+      {
+        "from": [
+          "West   42 Street",
+          "West 42 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 42 Street"
+      },
+      {
+        "from": [
+          "West   44 Street",
+          "West 44 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 44 Street"
+      },
+      {
+        "from": [
+          "West   59 Street",
+          "West  59 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 59 Street"
+      },
+      {
+        "from": [
+          "West   39 Street",
+          "West 39 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 39 Street"
+      },
+      {
+        "from": [
+          "West   31 Street",
+          "West 31 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 31 Street"
+      },
+      {
+        "from": [
+          "West   55 Street",
+          "West 55 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 55 Street"
+      },
+      {
+        "from": [
+          "West   28 Street",
+          "West 28 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 28 Street"
+      },
+      {
+        "from": [
+          "Merrick Blvd",
+          "Merrick Blvd."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Merrick Blvd"
+      },
+      {
+        "from": [
+          "Coney Island Avenue",
+          "Coney Island  Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Coney Island Ave"
+      },
+      {
+        "from": [
+          "East   81 Street",
+          "East 81 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 81 Street"
+      },
+      {
+        "from": [
+          "West   53 Street",
+          "West 53 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 53 Street"
+      },
+      {
+        "from": [
+          "East   50 Street",
+          "East 50 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 50 Street"
+      },
+      {
+        "from": [
+          "West   22 Street",
+          "West 22 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 22 Street"
+      },
+      {
+        "from": [
+          "West  207 Street",
+          "West 207 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 207 Street"
+      },
+      {
+        "from": [
+          "East   20 Street",
+          "East 20 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 20 Street"
+      },
+      {
+        "from": [
+          "East   34 Street",
+          "East 34 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 34 Street"
+      },
+      {
+        "from": [
+          "W 8th St",
+          "W. 8th St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 8 Street"
+      },
+      {
+        "from": [
+          "East   53 Street",
+          "East 53 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 53 Street"
+      },
+      {
+        "from": [
+          "East   15 Street",
+          "East 15 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 15 Street"
+      },
+      {
+        "from": [
+          "East   45 Street",
+          "East 45 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 45 Street"
+      },
+      {
+        "from": [
+          "South    6 Street",
+          "South 6 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "South 6 Street"
+      },
+      {
+        "from": [
+          "E Tremont Ave",
+          "E. Tremont Ave"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East Tremont Ave"
+      },
+      {
+        "from": [
+          "East   18 Street",
+          "East 18 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 18 Street"
+      },
+      {
+        "from": [
+          "1st Ave",
+          "1st  Ave"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "1st Ave"
+      },
+      {
+        "from": [
+          "East   48 Street",
+          "East 48 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 48 Street"
+      },
+      {
+        "from": [
+          "East   12 Street",
+          "East 12 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 12 Street"
+      },
+      {
+        "from": [
+          "East    9 Street",
+          "East 9 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 9 Street"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "West   58 Street",
+          "West 58 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 58 Street"
+      },
+      {
+        "from": [
+          "East   17 Street",
+          "East 17 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 17 Street"
+      },
+      {
+        "from": [
+          "East   60 Street",
+          "East 60 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 60 Street"
+      },
+      {
+        "from": [
+          "West    8 Street",
+          "West 8 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 8 Street"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "4th Ave"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "4 Ave"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "5 Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "5 Ave"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Second Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Second Ave"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Forest Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Forest Ave"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bAve\\b/, \"Avenue\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bAve\\b/, \"Avenue\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bSecond\\b/, \"2nd\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bSecond\\b/, \"2nd\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bFirst\\b/, \"1st\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bFirst\\b/, \"1st\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bThird\\b/, \"3rd\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bThird\\b/, \"3rd\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bFourth\\b/, \"4th\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bFourth\\b/, \"4th\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bFifth\\b/, \"5th\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bFifth\\b/, \"5th\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\b1\\b/, \"1st\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\b1\\b/, \"1st\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\b2\\b/, \"2nd\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\b2\\b/, \"2nd\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\b3\\b/, \"3rd\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\b3\\b/, \"3rd\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\b4\\b/, \"4th\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\b4\\b/, \"4th\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\b5\\b/, \"5th\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\b5\\b/, \"5th\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Hoyt Avenue S",
+          "Hoyt S Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hoyt South Avenue"
+      },
+      {
+        "from": [
+          "East    2nd Street",
+          "East 2nd  Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "East 2nd Street"
+      },
+      {
+        "from": [
+          "3rd Avenue",
+          "3rd  Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "3rd Avenue"
+      },
+      {
+        "from": [
+          "West    3rd Street",
+          "West 3rd Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 3rd Street"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\West\\b/, \"W\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\West\\b/, \"W\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bEast\\b/, \"E\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bEast\\b/, \"E\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bSouth\\b/, \"S\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bSouth\\b/, \"S\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bSouth\\b/, \"S\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bSouth\\b/, \"S\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/(\\d+)(st|nd|rd|th)\\b/, \"$1\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/(\\d+)(st|nd|rd|th)\\b/, \"$1\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "West   18 Street",
+          "West 18 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 18 Street"
+      },
+      {
+        "from": [
+          "West   25 Street",
+          "West 25 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 25 Street"
+      },
+      {
+        "from": [
+          "E Bedford Park Boulevard E",
+          "E Bedford Park Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E Bedford Park Blvd"
+      },
+      {
+        "from": [
+          "E 71 Street",
+          "E   71 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 71 Street"
+      },
+      {
+        "from": [
+          "E  204 Street",
+          "E 204 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 204 Street"
+      },
+      {
+        "from": [
+          "Bedford Park Blvd E",
+          "E Bedford Park Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E Bedford Park Blvd"
+      },
+      {
+        "from": [
+          "E   42 Street",
+          "E 42 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 42 Street"
+      },
+      {
+        "from": [
+          "West   36 Street",
+          "West 36 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 36 Street"
+      },
+      {
+        "from": [
+          "E   49 Street",
+          "E 49 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 49 Street"
+      },
+      {
+        "from": [
+          "West  116 Street",
+          "West 116 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 116 Street"
+      },
+      {
+        "from": [
+          "West 74 Street",
+          "West   74 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 74 Street"
+      },
+      {
+        "from": [
+          "S 4 St",
+          "S 4 St."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "S 4 Street"
+      },
+      {
+        "from": [
+          "E  183 Street",
+          "E. 183 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 183 Street"
+      },
+      {
+        "from": [
+          "E   92 Street",
+          "E 92 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 92 Street"
+      },
+      {
+        "from": [
+          "E   31 Street",
+          "E 31 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 31 Street"
+      },
+      {
+        "from": [
+          "E 5 Street",
+          "E. 5 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 5 Street"
+      },
+      {
+        "from": [
+          "West   48 Street",
+          "West 48 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "West 48 Street"
+      },
+      {
+        "from": [
+          "E  116 Street",
+          "E 116 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 116 Street"
+      },
+      {
+        "from": [
+          "E Tremont Avenue",
+          "E. Tremont Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E Tremont Avenue"
+      },
+      {
+        "from": [
+          "West   33 Street",
+          "West 33 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 33 Street"
+      },
+      {
+        "from": [
+          "E   56 Street",
+          "E  56 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 56 Street"
+      },
+      {
+        "from": [
+          "E   16 Street",
+          "E 16 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 16 Street"
+      },
+      {
+        "from": [
+          "E  222 Street",
+          "E. 222 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 222 Street"
+      },
+      {
+        "from": [
+          "West   94 Street",
+          "West 94 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 94 Street"
+      },
+      {
+        "from": [
+          "E  233 Street",
+          "E 233 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 233 Street"
+      },
+      {
+        "from": [
+          "S Avenue",
+          "Avenue S"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "S Avenue"
+      },
+      {
+        "from": [
+          "N   10 St",
+          "N 10 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "N 10 St"
+      },
+      {
+        "from": [
+          "E 90 Street",
+          "E   90 Street"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 90 Street"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bStreet\\b/, \"St\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bStreet\\b/, \"St\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "E   61 St",
+          "E 61 St",
+          "E 61 St St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 61 St"
+      },
+      {
+        "from": [
+          "E  148 St",
+          "E 148 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 148 St"
+      },
+      {
+        "from": [
+          "E   35 St",
+          "E 35 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 35 St"
+      },
+      {
+        "from": [
+          "E 166 St",
+          "E  166 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 166 St"
+      },
+      {
+        "from": [
+          "E  157 St",
+          "E 157 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 157 St"
+      },
+      {
+        "from": [
+          "E   44 St",
+          "E 44 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 44 St"
+      },
+      {
+        "from": [
+          "E   69 St",
+          "E 69 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 69 St"
+      },
+      {
+        "from": [
+          "E 125 St",
+          "E  125 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 125 St"
+      },
+      {
+        "from": [
+          "E   62 St",
+          "E 62 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 62 St"
+      },
+      {
+        "from": [
+          "E  175 St",
+          "E 175 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 175 St"
+      },
+      {
+        "from": [
+          "W 44 St",
+          "W. 44 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 44 St"
+      },
+      {
+        "from": [
+          "E   37 St",
+          "E 37 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 37 St"
+      },
+      {
+        "from": [
+          "E   67 St",
+          "E 67 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 67 St"
+      },
+      {
+        "from": [
+          "E  198 St",
+          "E 198 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 198 St"
+      },
+      {
+        "from": [
+          "E 173 St",
+          "E  173 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 173 St"
+      },
+      {
+        "from": [
+          "Brighton   11 St",
+          "Brighton 11 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Brighton 11 St"
+      },
+      {
+        "from": [
+          "E   80 St",
+          "E 80 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 80 St"
+      },
+      {
+        "from": [
+          "E 118 St",
+          "E  118 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 118 St"
+      },
+      {
+        "from": [
+          "E   64 St",
+          "E 64 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 64 St"
+      },
+      {
+        "from": [
+          "E   78 St",
+          "E 78 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 78 St"
+      },
+      {
+        "from": [
+          "E   74 St",
+          "E 74 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 74 St"
+      },
+      {
+        "from": [
+          "E  208 St",
+          "E 208 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 208 St"
+      },
+      {
+        "from": [
+          "E   73 St",
+          "E 73 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 73 St"
+      },
+      {
+        "from": [
+          "E   91 St",
+          "E 91 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 91 St"
+      },
+      {
+        "from": [
+          "W 23 St",
+          "W. 23 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 23 St"
+      },
+      {
+        "from": [
+          "Brighton    4 St",
+          "Brighton 4 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Brighton 4 St"
+      },
+      {
+        "from": [
+          "E   83 St",
+          "E 83 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 83 St"
+      },
+      {
+        "from": [
+          "E  168 St",
+          "E 168 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 168 St"
+      },
+      {
+        "from": [
+          "E   40 St",
+          "E 40 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 40 St"
+      },
+      {
+        "from": [
+          "E  172 St",
+          "E 172 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 172 St"
+      },
+      {
+        "from": [
+          "E 29 St",
+          "E   29 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 29 St"
+      },
+      {
+        "from": [
+          "S    1 St",
+          "S 1 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "S 1 St"
+      },
+      {
+        "from": [
+          "E  240 St",
+          "E 240 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 240 St"
+      },
+      {
+        "from": [
+          "E   96 St",
+          "E 96 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 96 St"
+      },
+      {
+        "from": [
+          "E   79 St",
+          "E 79 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 79 St"
+      },
+      {
+        "from": [
+          "E   63 St",
+          "E 63 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 63 St"
+      },
+      {
+        "from": [
+          "E 152 St",
+          "E  152 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 152 St"
+      },
+      {
+        "from": [
+          "E 26 St",
+          "E   26 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 26 St"
+      },
+      {
+        "from": [
+          "E   86 St",
+          "E 86 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E  86 St"
+      },
+      {
+        "from": [
+          "E  182 St",
+          "E 182 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 182 St"
+      },
+      {
+        "from": [
+          "W 20 St",
+          "W. 20 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 20 St"
+      },
+      {
+        "from": [
+          "E   66 St",
+          "E 66 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 66 St"
+      },
+      {
+        "from": [
+          "E  165 St",
+          "E 165 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 165 St"
+      },
+      {
+        "from": [
+          "W. 106 St",
+          "W 106 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 106 St"
+      },
+      {
+        "from": [
+          "E   77 St",
+          "E 77 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 77 St"
+      },
+      {
+        "from": [
+          "E   68 St",
+          "E 68 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 68 St"
+      },
+      {
+        "from": [
+          "E   59 St",
+          "E 59 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 59 St"
+      },
+      {
+        "from": [
+          "E  181 St",
+          "E 181 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 181 St"
+      },
+      {
+        "from": [
+          "E   93 St",
+          "E 93 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 93 St"
+      },
+      {
+        "from": [
+          "E  117 St",
+          "E 117 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 117 St"
+      },
+      {
+        "from": [
+          "E   70 St",
+          "E 70 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 70 St"
+      },
+      {
+        "from": [
+          "E 110 St",
+          "E  110 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 110 St"
+      },
+      {
+        "from": [
+          "E  188 St",
+          "E 188 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 188 St"
+      },
+      {
+        "from": [
+          "S  5 St",
+          "S 5 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "S 5 St"
+      },
+      {
+        "from": [
+          "West   65 St",
+          "West 65 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 65 St"
+      },
+      {
+        "from": [
+          "E 25 St",
+          "E   25 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 25 St"
+      },
+      {
+        "from": [
+          "E  138 St",
+          "E 138 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 138 St"
+      },
+      {
+        "from": [
+          "E  108 St",
+          "E 108 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 108 St"
+      },
+      {
+        "from": [
+          "S    2 St",
+          "S 2 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "S 2 St"
+      },
+      {
+        "from": [
+          "E   38 St",
+          "E 38 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 38 St"
+      },
+      {
+        "from": [
+          "E   84 St",
+          "E 84 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 84 St"
+      },
+      {
+        "from": [
+          "E   41 St",
+          "E 41 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 41 St"
+      },
+      {
+        "from": [
+          "E 186 St",
+          "E  186 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 186 St"
+      },
+      {
+        "from": [
+          "E   32 St",
+          "E 32 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 32 St"
+      },
+      {
+        "from": [
+          "E   65 St",
+          "E 65 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 65 St"
+      },
+      {
+        "from": [
+          "E  103 St",
+          "E 103 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 103 St"
+      },
+      {
+        "from": [
+          "E  194 St",
+          "E 194 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 194 St"
+      },
+      {
+        "from": [
+          "E   97 St",
+          "E 97 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 97 St"
+      },
+      {
+        "from": [
+          "E 24 St",
+          "E   24 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 24 St"
+      },
+      {
+        "from": [
+          "E 241 St",
+          "E  241 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 241 St"
+      },
+      {
+        "from": [
+          "E  109 St",
+          "E 109 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 109 St"
+      },
+      {
+        "from": [
+          "E   72 St",
+          "E 72 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 72 St"
+      },
+      {
+        "from": [
+          "E    3 St",
+          "E 3 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 3 St"
+      },
+      {
+        "from": [
+          "W 27 St",
+          "W. 27 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 27 St"
+      },
+      {
+        "from": [
+          "E 189 St",
+          "E  189 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 189 St"
+      },
+      {
+        "from": [
+          "E 106 St",
+          "E  106 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E 106 St"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Laguardia Airport",
+          "La Guardia Airport",
+          "Laguardia Airport Bldg",
+          "Lagaurdia Airport",
+          "Laguard Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Laguardia Airport"
+      },
+      {
+        "from": [
+          "Frederick Douglass Blvd",
+          "Frederick Douglass Boulevard",
+          "Frederick Douglas Boulevard",
+          "Frderick Douglass Boulevard",
+          "Frederick Douglas Blvd",
+          "Fredrick Douglas Boulevard",
+          "Fredrick Douglas Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Frederick Douglass Blvd"
+      },
+      {
+        "from": [
+          "Adam Clayton Powell Jr Blvd",
+          "Adam Clayton Powell Jr Boulevard",
+          "Adam Clayton Powell Boulevard",
+          "Adam Clayton Powell Jr B",
+          "Adam Clayton Powel Jr Blvd",
+          "Adam Clayton Powell Jr Bl",
+          "Adam Clayton Powel Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Adam Clayton Powell Jr Blvd"
+      },
+      {
+        "from": [
+          "Jfk Intl Airport Erminal 1",
+          "Jfk Int'l Airport Terminal 1"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jfk Intl Airport Terminal 1"
+      },
+      {
+        "from": [
+          "Horace Harding Expressway",
+          "Horace Harding Expy",
+          "Horace Harding_expressway",
+          "Horace Harding Express",
+          "Horace Harding Expway"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Horace Harding Expressway"
+      },
+      {
+        "from": [
+          "Jfk International Airpor",
+          "Jfk Internationation Airport",
+          "Jfk Internation Airport",
+          "Jfk International Llc"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jfk International Airport"
+      },
+      {
+        "from": [
+          "Father Capodanno Blvd",
+          "Father Cappdano Blvd",
+          "Father Capodanno Bouleva",
+          "Father Capodanno Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Father Capodanno Blvd"
+      },
+      {
+        "from": [
+          "E Gun Hill Rd",
+          "E Gun Hill Road",
+          "E Gunhill Road",
+          "E Gunhill Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E Gun Hill Rd"
+      },
+      {
+        "from": [
+          "Rockefeller Plaza",
+          "Rockfeeller Plaza",
+          "Rockefeller Plz",
+          "Rockefller Plaza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Rockefeller Plaza"
+      },
+      {
+        "from": [
+          "University Place",
+          "University Pl"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "University Place"
+      },
+      {
+        "from": [
+          "Metro Tech Center",
+          "Metrotech Center",
+          "Metro Tech Center S"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Metro Tech Center"
+      },
+      {
+        "from": [
+          "Beverly Road",
+          "Beverley Road",
+          "Beverley Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Beverly Road"
+      },
+      {
+        "from": [
+          "Sheepshead Bay Road",
+          "Sheepshead Bay Rd",
+          "Sheepsead Bay Road"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Sheepshead Bay Road"
+      },
+      {
+        "from": [
+          "Bedford Park Boulevard",
+          "Bedford Park Blvd W",
+          "Bedford Park Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Bedford Park Boulevard"
+      },
+      {
+        "from": [
+          "Springfield Boulevard",
+          "Springfield Blvd",
+          "Springfield Blvd Fl 1"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Springfield Boulevard"
+      },
+      {
+        "from": [
+          "New Dorp Lane",
+          "New Dorp Ln",
+          "Newdorp Ln"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "New Dorp Lane"
+      },
+      {
+        "from": [
+          "College Point Boulevard",
+          "College Point Blvd",
+          "College Point Bouleard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "College Point Boulevard"
+      },
+      {
+        "from": [
+          "Washington Square S",
+          "Washington Sq S"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Washington Square S"
+      },
+      {
+        "from": [
+          "High Line Park W 15 St",
+          "Highline Park, West 15 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Highline Park W 15 St"
+      },
+      {
+        "from": [
+          "Union Turnpike",
+          "Union Turnpyke",
+          "Union Turn Pike"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Union Turnpike"
+      },
+      {
+        "from": [
+          "Metropolitan Avenue",
+          "Metropolitan Aavenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Metropolitan Avenue"
+      },
+      {
+        "from": [
+          "John F. Kennedy Intl Airport",
+          "John F. Kennedy Intl Air",
+          "John F. Kennedy International Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jfk International Airport"
+      },
+      {
+        "from": [
+          "Grand Concourse",
+          "Grand Concourse Road",
+          "Grand Concrs"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Grand Concourse"
+      },
+      {
+        "from": [
+          "Central Terminal Area",
+          "Central Terminal"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Central Terminal"
+      },
+      {
+        "from": [
+          "Cortelyou Road",
+          "Cortelyou Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cortelyou Road"
+      },
+      {
+        "from": [
+          "Bruckner Boulevard",
+          "Bruckner Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Bruckner Boulevard"
+      },
+      {
+        "from": [
+          "Boston Post Road",
+          "Boston Post Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Boston Post Road"
+      },
+      {
+        "from": [
+          "White Plains Road",
+          "White Plains Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "White Plains Road"
+      },
+      {
+        "from": [
+          "Northern Boulevard",
+          "Northern Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Northern Boulevard"
+      },
+      {
+        "from": [
+          "Rockefeller Center",
+          "Rockefeller Center Plaza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Rockefeller Center"
+      },
+      {
+        "from": [
+          "Manhattan College Parkway",
+          "Manhattan College Pkwy"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Manhattan College Parkway"
+      },
+      {
+        "from": [
+          "Guy R Brewer Blvd",
+          "Guy R Brewer Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Guy R Brewer Blvd"
+      },
+      {
+        "from": [
+          "Lincoln Center Plaza",
+          "Lincoln Center Plz"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Lincoln Center Plaza"
+      },
+      {
+        "from": [
+          "La Salle St",
+          "Lasalle St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "La Salle St"
+      },
+      {
+        "from": [
+          "Gravesend Neck Road",
+          "Gravesend Neck Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Gravesend Neck Road"
+      },
+      {
+        "from": [
+          "Manor Road",
+          "Manor Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Manor Road"
+      },
+      {
+        "from": [
+          "Rockaway Boulevard",
+          "Rockway Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Rockaway Boulevard"
+      },
+      {
+        "from": [
+          "Richmond Hill Road",
+          "Richmond Hill Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Richmond Hill Road"
+      },
+      {
+        "from": [
+          "Unionport Road",
+          "Unionport Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Unionport Road"
+      },
+      {
+        "from": [
+          "Rockaway Parkway",
+          "Rockway Parkway"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Rockaway Parkway"
+      },
+      {
+        "from": [
+          "Mcdonald Avenue",
+          "Mc Donald Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mcdonald Avenue"
+      },
+      {
+        "from": [
+          "Lefferts Boulevard",
+          "Lefferts Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Lefferts Boulevard"
+      },
+      {
+        "from": [
+          "St Nicholas Aveue",
+          "St Nicholas Av"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "St Nicholas Avenue"
+      },
+      {
+        "from": [
+          "Richmond Road",
+          "Richmond Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Richmond Road"
+      },
+      {
+        "from": [
+          "Junction Boulevard",
+          "Junction Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Junction Boulevard"
+      },
+      {
+        "from": [
+          "Bay Ridge Avenue",
+          "Bayridge Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Bay Ridge Avenue"
+      },
+      {
+        "from": [
+          "Queens Plaza S",
+          "Queens Plz S"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Queens Plaza S"
+      },
+      {
+        "from": [
+          "Williamsbridge Road",
+          "Williamsbridge Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Williamsbridge Road"
+      },
+      {
+        "from": [
+          "Fort Hamilton Pkwy",
+          "Fort Hamilton Parkway"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Fort Hamilton Pkwy"
+      },
+      {
+        "from": [
+          "Jfk Airport",
+          "- Jfk Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jfk International Airport"
+      },
+      {
+        "from": [
+          "Avenue Of The Amer",
+          "Avenue Of Th Amer"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Avenue Of The Amer"
+      },
+      {
+        "from": [
+          "Cross Bronx Expressway",
+          "Cross Bronx Expy"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cross Bronx Expressway"
+      },
+      {
+        "from": [
+          "E Fordham Road",
+          "E Fordham Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E Fordham Road"
+      },
+      {
+        "from": [
+          "Quentin Road",
+          "Quentin Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Quentin Road"
+      },
+      {
+        "from": [
+          "Francis Lewis Boulevard",
+          "Francis Lewis Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Francis Lewis Boulevard"
+      },
+      {
+        "from": [
+          "Mother Gaston Blvd",
+          "Mother Gaston Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Mother Gaston Blvd"
+      },
+      {
+        "from": [
+          "La Guardia Place",
+          "Laguardia Place"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "La Guardia Place"
+      },
+      {
+        "from": [
+          "Chrystie St",
+          "Christie St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Chrystie St"
+      },
+      {
+        "from": [
+          "Macdougal St",
+          "Mac Dougal St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Macdougal St"
+      },
+      {
+        "from": [
+          "Metrotech",
+          "Metro Tech"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Metrotech"
+      },
+      {
+        "from": [
+          "Maiden Lane",
+          "Maiden Ln"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Maiden Lane"
+      },
+      {
+        "from": [
+          "Annadale Rd",
+          "Annadale Road"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Annadale Rd"
+      },
+      {
+        "from": [
+          "Ditmars Boulevard",
+          "Ditmars Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Ditmars Boulevard"
+      },
+      {
+        "from": [
+          "Richmond Valley Road",
+          "Richmond Valley Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Richmond Valley Road"
+      },
+      {
+        "from": [
+          "Van Duzer St",
+          "Vanduzer St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Van Duzer St"
+      },
+      {
+        "from": [
+          "Edward L Grant Highway",
+          "Edward L Grant Hwy"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Edward L Grant Highway"
+      },
+      {
+        "from": [
+          "Jfk Int Air Port",
+          "Jfk Int Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jfk International Airport"
+      },
+      {
+        "from": [
+          "Dry Harbor Road",
+          "Dry Harbor Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Dry Harbor Road"
+      },
+      {
+        "from": [
+          "Boston Road",
+          "Boston Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Boston Road"
+      },
+      {
+        "from": [
+          "Arthur Kill Road",
+          "Arthur Kill Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Arthur Kill Road"
+      },
+      {
+        "from": [
+          "Newkirk Plaza",
+          "Newkirk Plz"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Newkirk Plaza"
+      },
+      {
+        "from": [
+          "Cleveland Place",
+          "Cleveland Pl"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cleveland Place"
+      },
+      {
+        "from": [
+          "Courtlandt Avenue",
+          "Courtland Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Courtlandt Avenue"
+      },
+      {
+        "from": [
+          "Prospect Pl",
+          "Prospect Place"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Prospect Pl"
+      },
+      {
+        "from": [
+          "Dekalb Avenue",
+          "De Kalb Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Dekalb Avenue"
+      },
+      {
+        "from": [
+          "Oriental Boulevard",
+          "Oriental Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Oriental Boulevard"
+      },
+      {
+        "from": [
+          "Lenox Road",
+          "Lenox Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Lenox Road"
+      },
+      {
+        "from": [
+          "Westchester Sq",
+          "Westchester Square"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Westchester Sq"
+      },
+      {
+        "from": [
+          "E Kingsbridge Road",
+          "E Kingsbridge Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E Kingsbridge Road"
+      },
+      {
+        "from": [
+          "Clove Rd",
+          "Clove Road"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Clove Rd"
+      },
+      {
+        "from": [
+          "Greaves Lane",
+          "Greaves Ln"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Greaves Lane"
+      },
+      {
+        "from": [
+          "Vandam St",
+          "Van Dam St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Vandam St"
+      },
+      {
+        "from": [
+          "Giffords Lane",
+          "Giffords Ln"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Giffords Lane"
+      },
+      {
+        "from": [
+          "Jfk Airport Plc",
+          "Jfk Airport/british Airways Intl Termina"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jfk International Airport"
+      },
+      {
+        "from": [
+          "Washington Place",
+          "Washington Pl"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Washington Place"
+      },
+      {
+        "from": [
+          "International Airport",
+          "International Airport Center Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "International Airport"
+      },
+      {
+        "from": [
+          "Clarendon Road",
+          "Clarendon Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Clarendon Road"
+      },
+      {
+        "from": [
+          "New York Plz",
+          "New York Plaza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "New York Plz"
+      },
+      {
+        "from": [
+          "Malcolm X Blvd",
+          "Malcolm X Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Malcolm X Blvd"
+      },
+      {
+        "from": [
+          "Veterans Road",
+          "Veterans Rd W"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Veterans Road"
+      },
+      {
+        "from": [
+          "Crossbay Blvd",
+          "Cross Bay Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Crossbay Blvd"
+      },
+      {
+        "from": [
+          "Crossbay Boulevard",
+          "Cross Bay Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Crossbay Blvd"
+      },
+      {
+        "from": [
+          "Fresh Pond Road",
+          "Fresh Pond Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Fresh Pond Road"
+      },
+      {
+        "from": [
+          "Highline Park",
+          "High Line Park"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Highline Park"
+      },
+      {
+        "from": [
+          "Amboy Road",
+          "Amboy Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Amboy Road"
+      },
+      {
+        "from": [
+          "Knolls Crescent",
+          "Knolls Crescent St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Knolls Crescent"
+      },
+      {
+        "from": [
+          "Saint Marks Pl",
+          "Saint Marks Place"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Saint Marks Pl"
+      },
+      {
+        "from": [
+          "Clintonville St",
+          "Clinton Ville St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Clintonville St"
+      },
+      {
+        "from": [
+          "Depot Road",
+          "Depot Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Depot Road"
+      },
+      {
+        "from": [
+          "Hutchinson River Pkwy",
+          "Hutchinson River Parkway"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hutchinson River Pkwy"
+      },
+      {
+        "from": [
+          "Jefferson Blvd",
+          "Jefferson Boulevard"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Jefferson Blvd"
+      },
+      {
+        "from": [
+          "Kings Highway",
+          "Kings Hwy"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Kings Highway"
+      },
+      {
+        "from": [
+          "Flatbush Avenue Extension",
+          "Flatbush Avenue Ext"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Flatbush Avenue Extension"
+      },
+      {
+        "from": [
+          "Rockaway Beach Blvd",
+          "Rock Bch Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Rockaway Beach Blvd"
+      },
+      {
+        "from": [
+          "Yellowstone Boulevard",
+          "Yellowstone Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Yellowstone Boulevard"
+      },
+      {
+        "from": [
+          "Whitestone Expressway",
+          "Whitestone Expy"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Whitestone Expressway"
+      },
+      {
+        "from": [
+          "Rutland Road",
+          "Rutland Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Rutland Road"
+      },
+      {
+        "from": [
+          "Bleecker St",
+          "Bleeker St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Bleecker St"
+      },
+      {
+        "from": [
+          "Farmers Boulevard",
+          "Farmers Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Farmers Boulevard"
+      },
+      {
+        "from": [
+          "Featherbed Lane",
+          "Featherbed Ln"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Featherbed Lane"
+      },
+      {
+        "from": [
+          "Delancey St",
+          "Delancy St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Delancey St"
+      },
+      {
+        "from": [
+          "Glenwood Rd",
+          "Glenwood Road"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Glenwood Rd"
+      },
+      {
+        "from": [
+          "Dr Martin L King Jr Boulevard",
+          "Dr Martin L King Jr Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Dr Martin L King Jr Boulevard"
+      },
+      {
+        "from": [
+          "Kings Plz",
+          "Kings Plaza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Kings Plz"
+      },
+      {
+        "from": [
+          "Ferry Terminal Dr",
+          "Ferry Terminal Drive"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Ferry Terminal Dr"
+      },
+      {
+        "from": [
+          "Edward M Morgan Pl",
+          "Edward M Morgan Place"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Edward M Morgan Pl"
+      },
+      {
+        "from": [
+          "Stuyvesant Place",
+          "Stuyvesant Pl"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Stuyvesant Place"
+      },
+      {
+        "from": [
+          "Morningstar Rd",
+          "Morningstar Road"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Morningstar Rd"
+      },
+      {
+        "from": [
+          "Watchogue Road",
+          "Watchogue Rd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Watchogue Road"
+      },
+      {
+        "from": [
+          "United Nations Plaza",
+          "United Nations Plz"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "United Nations Plaza"
+      },
+      {
+        "from": [
+          "Penn Plaza",
+          "Penn Plz"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Penn Plaza"
+      },
+      {
+        "from": [
+          "Fresh Meadow Ln",
+          "Fresh Meadow Lane"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Fresh Meadow Ln"
+      },
+      {
+        "from": [
+          "La Guardia Intl Airport",
+          "Laguardia Intl Airport"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "La Guardia Intl Airport"
+      },
+      {
+        "from": [
+          "E Tremont Avenue",
+          "E Tremont Avenue B"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "E Tremont Avenue"
+      },
+      {
+        "from": [
+          "Amsterdam Avenue",
+          "Amsteredam Avenue"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Amsterdam Avenue"
+      },
+      {
+        "from": [
+          "Parsons Boulevard",
+          "Parsons Blvd"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Parsons Boulevard"
+      },
+      {
+        "from": [
+          "Minetta Lane",
+          "Minetta Ln"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Minetta Lane"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bWest\\b/, \"W\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bWest\\b/, \"W\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bRoad\\b/, \"Rd\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bRoad\\b/, \"Rd\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "grel:value.replace(/\\bNorth\\b/, \"N\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column STREET using expression grel:value.replace(/\\bNorth\\b/, \"N\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "STREET",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "W   60 St",
+          "W 60 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 60 St"
+      },
+      {
+        "from": [
+          "W 187 St",
+          "W  187 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 187 St"
+      },
+      {
+        "from": [
+          "N    9 St",
+          "N 9 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "N 9 St"
+      },
+      {
+        "from": [
+          "W   19 St",
+          "W 19 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 19 St"
+      },
+      {
+        "from": [
+          "W   12 St",
+          "W 12 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 12 St"
+      },
+      {
+        "from": [
+          "W   69 St",
+          "W 69 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 69 St"
+      },
+      {
+        "from": [
+          "W 62 St",
+          "W   62 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 62 St"
+      },
+      {
+        "from": [
+          "W 85 St",
+          "W   85 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 85 St"
+      },
+      {
+        "from": [
+          "W 105 St",
+          "W  105 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 105 St"
+      },
+      {
+        "from": [
+          "W 135 St",
+          "W  135 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 135 St"
+      },
+      {
+        "from": [
+          "W   63 St",
+          "W 63 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 63 St"
+      },
+      {
+        "from": [
+          "W   29 St",
+          "W 29 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 29 St"
+      },
+      {
+        "from": [
+          "N   14 St",
+          "N 14 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "N 14 St"
+      },
+      {
+        "from": [
+          "W  104 St",
+          "W 104 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 104 St"
+      },
+      {
+        "from": [
+          "W   83 St",
+          "W 83 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 83 St"
+      },
+      {
+        "from": [
+          "W  238 St",
+          "W 238 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 238 St"
+      },
+      {
+        "from": [
+          "W   20 St",
+          "W 20 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 20 St"
+      },
+      {
+        "from": [
+          "W  218 St",
+          "W 218 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 218 St"
+      },
+      {
+        "from": [
+          "W   84 St",
+          "W 84 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 84 St"
+      },
+      {
+        "from": [
+          "W 131 St",
+          "W  131 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 131 St"
+      },
+      {
+        "from": [
+          "W   52 St",
+          "W 52 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 52 St"
+      },
+      {
+        "from": [
+          "W  235 St",
+          "W 235 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 235 St"
+      },
+      {
+        "from": [
+          "W   16 St",
+          "W 16 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 16 St"
+      },
+      {
+        "from": [
+          "W 230 St",
+          "W  230 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 230 St"
+      },
+      {
+        "from": [
+          "W  154 St",
+          "W 154 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 154 St"
+      },
+      {
+        "from": [
+          "N   12 St",
+          "N 12 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "N 12 St"
+      },
+      {
+        "from": [
+          "W   68 St",
+          "W 68 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 68 St"
+      },
+      {
+        "from": [
+          "W   75 St",
+          "W 75 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 75 St"
+      },
+      {
+        "from": [
+          "N    8 St",
+          "N 8 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "N 8 St"
+      },
+      {
+        "from": [
+          "W  181 St",
+          "W 181 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 181 St"
+      },
+      {
+        "from": [
+          "N    5 St",
+          "N 5 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "N 5 St"
+      },
+      {
+        "from": [
+          "W  109 St",
+          "W 109 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 109 St"
+      },
+      {
+        "from": [
+          "N 4 St",
+          "N    4 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "N 4 St"
+      },
+      {
+        "from": [
+          "W  170 St",
+          "W 170 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 170 St"
+      },
+      {
+        "from": [
+          "W 183 St",
+          "W  183 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 183 St"
+      },
+      {
+        "from": [
+          "W 136 St",
+          "W  136 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 136 St"
+      },
+      {
+        "from": [
+          "W   37 St",
+          "W 37 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 37 St"
+      },
+      {
+        "from": [
+          "W  120 St",
+          "W 120 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 120 St"
+      },
+      {
+        "from": [
+          "W   47 St",
+          "W 47 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 47 St"
+      },
+      {
+        "from": [
+          "W 231 St",
+          "W  231 St"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "W 231 St"
+      }
+    ],
+    "description": "Mass edit cells in column STREET"
+  }
+]
