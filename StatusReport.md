@@ -21,6 +21,15 @@
 
 <p>So far for the project, we have acquired the datasets that we will use. We acquired the data from Kaggle, which was sourced from the NYC Department of Health and the City of New York, from NYC Open Data. We downloaded these datasets directly from Kaggle. We evaluated the data based on the FAIR guiding principles to determine if the data is findable, accessible, interoperable, and reusable. We determined that both datasets score well within the FAIR guiding principles because the data is publically available from the city of New York, has DOIs, is free to download, uses common vocabulary for integration, and contains information about metadata. We used OpenRefine to clean the datasets. After cleaning the data using OpenRefine, we picked the specific columns we wanted to look at within each dataset and integrated the two datasets using Python.</p>
 
+<p>The supporting artifacts for our progress include:</p>
+<ul>
+  <li><a href="https://github.com/bushralat/TheFAIRies/blob/main/open_refine_history_rat_sightings.json">OpenRefine history for the rat sightings file.</a></li>
+  <li><a href="https://github.com/bushralat/TheFAIRies/blob/main/open_refine_history_NYC_Restaurant.json">OpenRefine history for the restaurant inspections file.</a></li>
+  <li><a href="https://github.com/bushralat/TheFAIRies/blob/main/cleaned_rat.csv.zip">The cleaned rat sightings dataset.</a></li>
+  <li><a href="https://github.com/bushralat/TheFAIRies/blob/main/cleaned_restaurant.csv.zip">The cleaned restaurant sightings dataset.</a></li>
+  <li><a href="https://github.com/bushralat/TheFAIRies/blob/main/merged_df.csv">The integrated dataset.</a></li>
+</ul>
+
 <h2>Updated Timeline</h2>
 
 <p>Within the next two weeks we will run exploratory analyses on the integrated dataset and identify possible connections. We will also produce an automated end-to-end workflow and produce metadata and data documentation to support understandability and reusability.</p>
