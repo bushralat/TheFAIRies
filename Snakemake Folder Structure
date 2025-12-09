@@ -1,0 +1,15 @@
+is477-TheFAIRies-workflow/
+├─ Snakefile
+├─ scripts/
+│   ├─ select_clean_rat.py
+│   ├─ select_clean_restaurant.py
+│   ├─ merge_zip.py
+│   ├─ summary_and_findings.py
+│   ├─ make_plots.py
+├─ data/
+│   ├─ raw/                       #raw data files go in here
+│   ├─ clean/                     #OpenRefine cleaned data files go in here
+│   └─ processed/
+├─ figures/
+├─ results/
+└─ project.ipynb
