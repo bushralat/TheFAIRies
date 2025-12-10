@@ -75,9 +75,60 @@ Link to our Box File with raw and output data: https://uofi.box.com/s/f8dw62s6x4
 
 
 <p>In order to reproduce our workflow, you will need the data after we cleaned it in OpenRefine.</p>
+<p>This data is already in the <a href="https://github.com/bushralat/TheFAIRies/tree/main/data/clean">data/clean folder</a>.</p>
+<p>The data inside the workflow is zipped due being large files, however the snakemake workflow unzips it.</p>
+
+<p>The folder structure for the workflow is listed <a href="https://github.com/bushralat/TheFAIRies/blob/main/Snakemake%20Folder%20Structure">here</a>.</p>
+
+<p>The following packages and virtual environment were used for this project:</p>
 <ul>
-  <li><a href="">OpenRefine Cleaned Restaurant Dataset</a></li>
+  <li>Miniconda: ~/miniconda3/etc/profile.d/conda.sh</li>
+  <li>Snakemake: conda install -c bioconda -c conda-forge snakemake</li>
+  <li>Imports:</li>
+      <li>Import pandas as pd</li>
+      <li>Import matplotlib.pyplot as plt</li>
+      <li>Import seaborn as sns</li>
 </ul>
+
+
+The workflow:
+
+1. Starts from **OpenRefine–cleaned data** packaged in `.zip` files
+2. Unzips and standardizes those cleaned files
+3. Selects relevant columns and drops incomplete rows
+4. Aggregates data by ZIP code and merges the two datasets
+5. Produces summary statistics and a correlation matrix
+6. Generates figures suitable for a report / notebook
+
+## Script Descriptions
+
+### `select_clean_rat.py`
+Cleans the OpenRefine cleaned rat sightings dataset by selecting relevant columns, removing incomplete rows, printing basic data quality checks, and saving a fully cleaned CSV (cleaned_rat.csv).
+
+### `select_clean_restaurant.py`
+Cleans the OpenRefine-processed restaurant inspection dataset by selecting key fields, dropping rows with missing data, and producing a cleaned dataset (cleaned_restaurant.csv).
+
+### `merge_zip.py`
+Aggregates the cleaned rat and restaurant datasets by ZIP code, computes statistics such as rat sighting counts, inspection totals, and critical violation rates, merges the results, and outputs a unified ZIP-level dataset. Produces "merged_df".
+
+### `summary_and_findings.py` *(or `summary_and_corr.py`)*
+Generates numerical summary statistics and a correlation matrix from the merged ZIP-level dataset and saves the resulting CSV files into the `results/` directory.
+
+### `make_plots.py`
+Creates all figures used in the analysis—including bar charts, scatterplots, regression plots, histograms, and a correlation heatmap—and saves them as PNG files in the `figures/` directory.
+
+---
+
+## Snakemake Unzip Rules
+
+### `unzip_rat`
+A Snakemake rule that extracts the rat sightings CSV from the zipped OpenRefine-cleaned file, creating the input needed for rat data cleaning.
+
+### `unzip_restaurant`
+A Snakemake rule that extracts the restaurant inspection CSV from the zipped OpenRefine-cleaned file, creating the input needed for restaurant data cleaning.
+
+### `Snakefile`
+Defines the full automated workflow, including unzipping, cleaning, merging, summarizing, and plotting. Snakemake determines appropriate execution order and ensures full reproducibility.
 
 
 <h3>References</h3>
