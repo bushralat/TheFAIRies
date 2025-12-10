@@ -74,6 +74,12 @@
 Link to our Box File with raw and output data: https://uofi.box.com/s/f8dw62s6x4l1mobp91dv0fycrxc0hvku<a href="https://uofi.box.com/s/f8dw62s6x4l1mobp91dv0fycrxc0hvku">
 
 
+<p>In order to reproduce our workflow, you will need the data after we cleaned it in OpenRefine.</p>
+<ul>
+  <li><a href="">OpenRefine Cleaned Restaurant Dataset</a></li>
+</ul>
+
+
 <h3>References</h3>
 
 
