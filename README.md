@@ -8,7 +8,9 @@
   <li>Sanvi Singh - sanvis2</li>
 </ul>
 
+
 <h3>Summary:</h3>
+
 
 <p>Our project explores whether there is a meaningful relationship between rat sightings in New York City and the outcomes of restaurant health inspections across the same neighborhoods. Both issues are widely discussed in NYC, since rats are extremely common throughout the city and restaurant inspections are used to monitor public health. Since both datasets come from the same city and share the same geographic structure, we wanted to see whether neighborhoods that struggle more with rat sightings also tend to have restaurants with lower grades or more critical health violations. The goal of this project is not to claim that rats directly cause poor restaurant inspections, but instead to see whether these patterns appear together and what that might mean for public health and city planning.</p>
 <p>We started by acquiring two open datasets from Kaggle. One dataset contains tens of thousands of reports of rat sightings made by the public. Each report includes the location of the sighting, including the ZIP code, the date the sighting was reported, and information about whether the complaint was inspected by the city. The second dataset contains restaurant inspection data from the NYC Department of Health. It includes the name, address, cuisine type, violation descriptions, inspection scores, and inspection grades for restaurants across all five boroughs. Because both datasets came from NYC Open Data originally, they follow similar organizational standards and are relatively compatible for integration after cleaning.</p>
@@ -18,7 +20,9 @@
 <p>By integrating the datasets and preparing them for analysis, we can now visualize rat activity alongside restaurant inspection outcomes. Although we have not completed our full statistical analysis yet, our early observations suggest that some ZIP codes with very high rat sightings also show higher inspection scores, meaning worse restaurant performance. This pattern is not universal, but it appears often enough that it seems worth investigating further. With the integrated dataset ready, we can proceed with measuring these relationships more formally and producing visualizations that can highlight trends more clearly.</p>
 <p>Overall, this project demonstrates the value of integrating separate public datasets to explore broader public health questions. It also shows how much time and attention is required for cleaning and preparing real-world data before analysis can even begin. Our work so far sets up the next steps of the project, which include running exploratory visualizations, automating the workflow, and writing up a full reproducible report.</p>
 
+
 <h3>Data Profile</h3>
+
 
 <p>Our project uses two datasets that both come from public city information originally hosted on NYC Open Data. Although we downloaded them through Kaggle, both datasets were created by the NYC Department of Health and Mental Hygiene and the City of New York. Because they come from official city sources, the data is governed by open-data licensing, allowing for reuse and analysis as long as the original attribution is maintained. This makes them suitable for class projects and supports the FAIR principles of openness and reusability.</p>
 <p>The first dataset contains records of rat sightings reported by the public. Each row represents one rat-related complaint submitted through the city’s 311 system. The dataset includes the date and time the complaint was created, the type of complaint, the location, the borough, the ZIP code, and the inspection status of the report. The dataset also includes latitude and longitude information, which makes it possible to map trends, although our project focuses on ZIP code because it is the variable that can connect the dataset to restaurant inspections. The dataset contains tens of thousands of observations covering many years. However, the volume of data also introduces challenges. Some records contain missing or incorrect ZIP codes, inconsistent date formats, and variations in how location fields were entered. We corrected these issues through data cleaning in OpenRefine.</p>
@@ -28,7 +32,9 @@
 <p>To evaluate the datasets under the FAIR principles, we considered whether they are findable, accessible, interoperable, and reusable. Both datasets are findable through NYC Open Data and Kaggle and include metadata that explains their contents. They are accessible to anyone without requiring special permission or credentials. They are also interoperable because they contain clear variable names, simple formats, and common data types that make them easy to load in Python or OpenRefine. Finally, they are reusable because they include documentation, open licensing, and stable identifiers such as DOIs on Kaggle. Together, the datasets meet the FAIR principles and provide a strong foundation for integration.</p>
 <p>Overall, the rat sightings dataset and restaurant inspections dataset each contain rich information about different aspects of NYC public health. When combined, they create a new opportunity to explore how environmental conditions and restaurant hygiene may relate to one another at the neighborhood level. The datasets have limitations, especially in terms of missing or inconsistent values, but after cleaning, they provide a reliable basis for our analysis.</p>
 
+
 <h3>Data Quality</h3>
+
 
 <p>Data quality played a major role in this project because both datasets contained many inconsistencies that needed to be resolved before integration. The rat sightings dataset and the restaurant inspections dataset were created by different city systems, which means they follow different patterns in how they record addresses, dates, names, and ZIP codes. We needed to examine the quality of the data carefully, identify problems, and fix them in a consistent way. Most of this work was done in OpenRefine, since it allowed us to explore patterns, cluster similar text values, and standardize fields efficiently.</p>
 <p>One of the biggest issues in both datasets involved the address fields. The rat sightings dataset includes location fields such as street names, house numbers, and city names, but these are not always written consistently. For example, street names sometimes appear in full, such as “West 18th Street,” while other times they use abbreviations like “W 18 St.” Some entries contain repeated words or incorrectly formatted ordinal numbers. These issues make it hard to group observations by location or compare records. In the restaurant inspections dataset, the address issues were even more noticeable because restaurants appear multiple times across different inspections. Some restaurants had three or four versions of their address due to spelling differences or missing values. Cleaning these fields required clustering similar values, normalizing spacing and capitalization, and rewriting entries so that they follow one consistent format.</p>
@@ -39,7 +45,9 @@
 <p>One final data quality concern was the imbalance between the two datasets. The restaurant dataset has several hundred thousand rows, while the rat dataset had a little over eighty thousand after cleaning. Because of this difference, integrating the datasets by row would not make sense. To address this, we aggregated each dataset by ZIP code before merging them. This created a more balanced structure and prevented the restaurant dataset from dominating the combined file.</p>
 <p>Overall, the data cleaning and quality assessment steps were essential because they allowed us to create a reliable and consistent dataset for analysis. The corrections we made ensure that the results will be meaningful and that our workflow can be reproduced by others.</p>
 
+
 <h3>Findings</h3>
+
 
 <p>After cleaning, aggregating, and integrating the two datasets, we created a combined dataset where each row represents a single ZIP code. This allowed us to compare rat sightings and restaurant inspection outcomes in a clear and structured way. At this stage, our findings focus on the patterns we observed through our analysis and exploratory summaries. First, we looked at the summary statistics of all relevant variables in our integrated dataset. This included the variables for number of rat sightings per zip code, total number of restaurant inspections per zip code, number of unique restaurants per zip code, average restaurant inspection score per zip code, median restaurant inspection score per zip code, and average number of restaurants that were flagged as in “critical” condition per zip code, which we dubbed “critical rate”. </p>
 <p>After looking at the summary statistics for each of these variables we were able to better understand how the data is distributed. For example, the mean for number of rat sightings per zip code was 450.4, but had a standard deviation of 453.96. This indicates a large variance in rat sightings per zip code. This is reflected in the figure “rat_sightings_per_zip”, where you can see that there is a large variation in rat sightings per zip code. Certain clusters of zip codes, such as zip codes in the 11250 zip area, have thousands of rat sightings, whereas other zip codes have far fewer. This indicates that large amounts of rat sightings tend to be clustered in the same area and could be a sign of busier areas or areas with geographical issues.</p>
@@ -49,7 +57,9 @@
 <p>Finally, we visualized the numerical correlation between each variable in the figure “corr_heatmap”. This figure states the correlation between each variable in our merged dataset, so we were able to see that there was not a high correlation between any of the restaurant inspection variables and the number of rat sightings by zip code. This confirmed our initial analysis that there is not a strong correlation between rat sightings and restaurant quality, at least as described by the datasets.</p>
 <p>Overall, these visualizations and analysis tell us that high numbers of rat sightings in certain areas are not a strong indicator of restaurant quality. They could play a part in overall quality of living in certain areas of NYC, but do not have a strong relationship specifically with restaurant health and safety.</p>
 
+
 <h3>Future Work</h3>
+
 
 <p>Based on the analyses we made, we found that the answers to our initial questions came out to be inconclusive. We found no significant evidence that there is a strong relationship between rat sightings and restaurant quality in the area. When visualizing average restaurant quality score by zip code and number of rat sightings, we did see a weak positive correlation. This could be due to the fact that there is a weak relationship between rat sightings and restaurant scoring. However, it could also be because broader geographical issues are related to poor restaurant health and safety. For example, poorer areas in NYC could have more rat sightings and restaurants with more health code violations due to poor environmental conditions. In order to better understand the relationship between geographical conditions and restaurant quality, more data would need to be collected and analyzed. This data could be related to the environmental and geographic conditions of different neighborhoods in NYC. The data should include zip code so we can aggregate the datasets on zip code again. Then, we could explore areas such as neighborhood wealth, environmental conditions, and other aspects of neighborhood quality. We could then incorporate more granular geographical data analysis in order to explore relationships between geography and restaurant health quality.</p>
 <p>Another aspect of our workflow that could be improved is within data cleaning. We did initial data cleaning of both datasets using OpenRefine, and then moved our data to a Jupyter Notebook to reduce the data to what we needed. We reduced the two datasets by dropping all variables except the ones we were interested in looking at. Furthermore, we dropped rows with missing values. Doing this dropped a chunk of our data. It wasn’t a majority of the datasets but it did reduce the data by a sizable amount. Therefore, we could approach data differently by implementing a pipeline that imputes new values in replacement of missing data rather than dropping all rows with missing values. This could improve our workflow by allowing us to utilize more of the data for our analysis of the integrated data.</p>
@@ -57,12 +67,15 @@
 <p>Finally, we could add more analysis to our workflow by creating a predictive model based on our data. This could be a linear regression model that predicts restaurant quality score based on rat sightings. Producing a predictive model based on our data could provide a little more insight as to how strong the relationship between rat sightings and restaurant quality is.</p>
 <p>Overall, the ideas produced from this project could be further studied by acquiring new geographical data to explore new questions, and by making improvements to our workflow to better assess our analyses.</p>
 
+
 <h3>Reproducing</h3>
+
 
 Link to our Box File with raw and output data: https://uofi.box.com/s/f8dw62s6x4l1mobp91dv0fycrxc0hvku<a href="https://uofi.box.com/s/f8dw62s6x4l1mobp91dv0fycrxc0hvku">
 
 
 <h3>References</h3>
+
 
 <p>Original Sources:</p>
 <p>New York City Department of Health and Mental Hygiene. (n.d.). Restaurant Inspection Results [Data set]. NYC Open Data. https://data.cityofnewyork.us/Health/Restaurant-Inspection-Results/43nn-pn8j</p>
@@ -76,6 +89,7 @@ Link to our Box File with raw and output data: https://uofi.box.com/s/f8dw62s6x4
 
 
 <h3>Metadata Documentation</h3>
+
 
 <p><b>DataCite-Style MetaData for Project Datasets</b></p>
 <p><b>Primary Dataset 1: NYC Restaurant Inspection Results</b></p>
@@ -161,7 +175,9 @@ Link to our Box File with raw and output data: https://uofi.box.com/s/f8dw62s6x4
 <p><u>License:</u></p>
 <p>Derived from NYC public domain datasets. This dataset inherits NYC Open Data’s PDDL license.</p>
 
+
 <h3>Software and Tools Used</h3>
+
 
 <p><b>OpenRefine:</b></p>
 <p>Version: 3.x</p>
