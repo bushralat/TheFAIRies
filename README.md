@@ -67,3 +67,113 @@ Link to our Box File with raw and output data: https://uofi.box.com/s/f8dw62s6x4
 <p>Original Sources:</p>
 <p>New York City Department of Health and Mental Hygiene. (n.d.). Restaurant Inspection Results [Data set]. NYC Open Data. https://data.cityofnewyork.us/Health/Restaurant-Inspection-Results/43nn-pn8j</p>
 <p>New York City 311 / NYC Department of Health and Mental Hygiene. (n.d.). Rodent Inspection [Data set]. NYC Open Data. https://data.cityofnewyork.us/Health/Rodent-Inspection/p937-wjvj</p>
+
+<p>Redistributed Versions Used for Download:</p>
+<p>Boysen, J. (2017). NYC Restaurant Inspections [Data set]. Kaggle. https://www.kaggle.com/datasets/new-york-city/nyc-inspections</p>
+<p>Boysen, J. (2017). NYC Rat Sightings [Data set]. Kaggle. https://www.kaggle.com/datasets/new-york-city/nyc-rat-sightings/data</p>
+<p>OpenRefine Team. (2023). OpenRefine [Software]. https://openrefine.org</p>
+<p>Microsoft. (2023). Visual Studio Code [Software]. https://code.visualstudio.com</p>
+
+
+<h3>Metadata Documentation</h3>
+
+<p><b>DataCite-Style MetaData for Project Datasets</b></p>
+<p><b>Primary Dataset 1: NYC Restaurant Inspection Results</b></p>
+
+<p><u>Identifier:</u></p>
+<p>Official Source URL: https://data.cityofnewyork.us/Health/Restaurant-Inspection-Results/43nn-pn8j</p>
+
+<p><u>Title:</u></p>
+<p>Restaurant Inspection Results</p>
+
+<p><u>Creator / Publisher:</u></p>
+<p>New York City Department of Health and Mental Hygiene (DOHMH)</p>
+
+<p><u>Publication Year:</u></p>
+<p>Ongoing dataset, accessed 2025</p>
+
+<p><u>Resource Type:</u></p>
+<p>Open government dataset (CSV)</p>
+
+<p><u>Description:</u></p>
+<p>This dataset contains detailed records of restaurant inspections for food establishments across New York City. It includes inspection dates, inspection types, violation descriptions, violation codes, risk categories, cuisines, restaurant names, and the health grades assigned by DOHMH inspectors. The records span multiple years and provide insight into restaurant sanitation, food safety compliance, and health code violations at the ZIP-code level. These variables allow us to analyze location-based inspection trends and compare them with rat sighting patterns.</p>
+
+<p><u>Version / Access Details:</u></p>
+<p>Accessed through NYC Open Data in 2025. Downloaded through Kaggle, which mirrors the official NYC dataset but the authoritative provenance is NYC Open Data.</p>
+
+<p><u>License:</u></p>
+<p>Open Data Commons Public Domain Dedication and License (PDDL) — standard for NYC Open Data.</p>
+
+<p><u>Related Identifiers:</u></p>
+<p>Kaggle mirror used for download: https://www.kaggle.com/datasets/new-york-city/nyc-inspections</p>
+
+
+<p><b>Primary Dataset 2: NYC Rodent Inspection (Rat Sightings) Dataset</b></p>
+
+<p><u>Identifier:</u></p>
+<p>Official Source URL: https://data.cityofnewyork.us/Health/Rodent-Inspection/p937-wjvj</p>
+
+<p><u>Title:</u></p>
+<p>Rodent Inspection (Rat Sightings)</p>
+
+<p><u>Creator/Publisher:</u></p>
+<p>New York City Department of Health and Mental Hygiene (DOHMH)</p>
+
+<p><u>Publication Year:</u></p>
+<p>Ongoing dataset, accessed 2025</p>
+
+<p><u>Resource Type:</u></p>
+<p>Open government dataset (CSV)</p>
+
+<p><u>Description:</u></p>
+<p>This dataset contains records of rodent-related complaints, inspections, and outcomes reported across New York City. Each record includes the date of the sighting or inspection, the complaint type, inspection result (Passed, Failed, Monitoring, etc.), the geographic coordinates, and the ZIP code. These records allow us to analyze the distribution of rat activity in different areas of NYC and compare those patterns to restaurant inspection performance.</p>
+
+<p><u>Version / Access Details:</u></p>
+<p>Accessed through NYC Open Data in 2025. Downloaded through Kaggle, which redistributed an older version of the same data. The authoritative source is NYC Open Data.</p>
+
+<p><u>License:</u></p>
+<p>Open Data Commons Public Domain Dedication and License (PDDL).</p>
+
+<p><u>Related Identifiers:</u></p>
+<p>Kaggle mirror used for download: https://www.kaggle.com/datasets/new-york-city/nyc-rat-sightings/data</p>
+
+
+<p><b>Integrated Dataset (Created for This Project)</b></p>
+
+<p><u>Identifier:</u></p>
+<p>Created by: Sanvi Singh and Bushra Lat, Not publicly released outside this repository</p>
+
+<p><u>Title:</u></p>
+<p>Integrated Dataset Combining NYC Rat Sightings and Restaurant Inspection Results</p>
+
+<p><u>Creator/Publisher:</u></p>
+<p>Sanvi Singh and Bushra Lat</p>
+
+<p><u>Publication Year:</u></p>
+<p>2025</p>
+
+<p><u>Resource Type:</u></p>
+<p>Derived Dataset</p>
+
+<p><u>Description:</u></p>
+<p>This dataset was created by merging the cleaned NYC Rat Sightings dataset and the NYC Restaurant Inspection Results dataset using ZIP codes as the shared key. Before integration, both datasets were cleaned using OpenRefine to standardize address formats, correct business names, validate ZIP codes, and normalize date formats. Missing or invalid ZIP codes were removed, and irrelevant variables were filtered out. The merged dataset includes rat sighting counts, restaurant inspection counts, aggregated inspection scores, the number of unique restaurants in each ZIP code, and the percentage of restaurants earning an “A” grade. This dataset supports analysis of the relationship between rat activity and restaurant sanitation outcomes across NYC.</p>
+
+<p><u>License:</u></p>
+<p>Derived from NYC public domain datasets. This dataset inherits NYC Open Data’s PDDL license.</p>
+
+<h3>Software and Tools Used</h3>
+
+<p><b>OpenRefine:</b></p>
+<p>Version: 3.x</p>
+<p>Description: Used to clean and standardize both datasets, including address normalization, ZIP code validation, removing duplicates, merging restaurant name variants, converting case formats, and harmonizing date formats.</p>
+<p>URL: https://openrefine.org<a href="https://openrefine.org"></p>
+
+
+<p><b>Visual Studio Code</b></p>
+<p>Version: 1.106.3</p>
+<p>Description: Used to run Python scripts for grouping, aggregating, merging, and exporting the integrated dataset.</p>
+<p>URL: https://code.visualstudio.com<a href="https://code.visualstudio.com"></p>
+
+
+<p><b>Python + Pandas</b></p>
+<p>Used for grouping by ZIP code, aggregating fields, dropping missing values, and merging datasets.</p>
