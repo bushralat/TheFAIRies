@@ -1,15 +1,15 @@
 is477-TheFAIRies-workflow/
-├─ Snakefile
+├─ Snakefile                          #Snakefile to run the snakemake workflow
 ├─ scripts/
-│   ├─ select_clean_rat.py
-│   ├─ select_clean_restaurant.py
-│   ├─ merge_zip.py
-│   ├─ summary_and_findings.py
-│   ├─ make_plots.py
+│   ├─ select_clean_rat.py            #script to clean the rat_sightings dataset
+│   ├─ select_clean_restaurant.py     #script to clean the restaurant_inspections dataset
+│   ├─ merge_zip.py                   #script to integrate the two datasets on zip code
+│   ├─ summary_and_findings.py        #script to find the summary statistics of each variable and produce a correlation matrix
+│   ├─ make_plots.py                  #script to produce 5 visualizations to analyze how different variables are related
 ├─ data/
-│   ├─ raw/                       #raw data files go in here
-│   ├─ clean/                     #OpenRefine cleaned data files go in here
-│   └─ processed/
-├─ figures/
-├─ results/
-└─ project.ipynb
+│   ├─ raw/                           #raw data files go in here (optional and not part of workflow)
+│   ├─ clean/                         #OpenRefine cleaned data files go in here (found in TheFAIRies repo)
+│   └─ merged/                        #integrated dataset will appear here
+├─ figures/                           #visual plots will appear here
+├─ results/                           #summary statistics files will appear here
+└─ project.ipynb                      #code to run the workflow will be in here
