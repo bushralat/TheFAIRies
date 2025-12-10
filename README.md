@@ -102,6 +102,8 @@ The workflow:
 
 ## Script Descriptions
 
+</p><a href="https://github.com/bushralat/TheFAIRies/tree/main/scripts">Scripts</a> found in this folder.</p>
+
 ### `select_clean_rat.py`
 Cleans the OpenRefine cleaned rat sightings dataset by selecting relevant columns, removing incomplete rows, printing basic data quality checks, and saving a fully cleaned CSV (cleaned_rat.csv).
 
