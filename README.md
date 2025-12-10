@@ -106,12 +106,12 @@ The workflow:
 Cleans the OpenRefine cleaned rat sightings dataset by selecting relevant columns, removing incomplete rows, printing basic data quality checks, and saving a fully cleaned CSV (cleaned_rat.csv).
 
 ### `select_clean_restaurant.py`
-Cleans the OpenRefine-processed restaurant inspection dataset by selecting key fields, dropping rows with missing data, and producing a cleaned dataset (cleaned_restaurant.csv).
+Cleans the OpenRefine cleaned restaurant inspection dataset by selecting key fields, dropping rows with missing data, and producing a cleaned dataset (cleaned_restaurant.csv).
 
 ### `merge_zip.py`
 Aggregates the cleaned rat and restaurant datasets by ZIP code, computes statistics such as rat sighting counts, inspection totals, and critical violation rates, merges the results, and outputs a unified ZIP-level dataset. Produces "merged_df".
 
-### `summary_and_findings.py` *(or `summary_and_corr.py`)*
+### `summary_and_findings.py`
 Generates numerical summary statistics and a correlation matrix from the merged ZIP-level dataset and saves the resulting CSV files into the `results/` directory.
 
 ### `make_plots.py`
@@ -128,7 +128,7 @@ A Snakemake rule that extracts the rat sightings CSV from the zipped OpenRefine-
 A Snakemake rule that extracts the restaurant inspection CSV from the zipped OpenRefine-cleaned file, creating the input needed for restaurant data cleaning.
 
 ### `Snakefile`
-Defines the full automated workflow, including unzipping, cleaning, merging, summarizing, and plotting. Snakemake determines appropriate execution order and ensures full reproducibility.
+Defines the full automated workflow, including unzipping, cleaning, merging, summarizing, and plotting.
 
 
 <h3>References</h3>
