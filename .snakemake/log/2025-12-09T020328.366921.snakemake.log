@@ -1,0 +1,7 @@
+Assuming unrestricted shared filesystem usage.
+host: Bushras-MacBook-Pro.local
+Building DAG of jobs...
+MissingInputException in rule all in file "/Users/bushralat/Desktop/IS477 Workflow/Snakefile", line 3:
+Missing input files for rule all:
+    affected files:
+        figures/distributions.png

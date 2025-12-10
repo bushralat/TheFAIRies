@@ -1,0 +1,102 @@
+Assuming unrestricted shared filesystem usage.
+host: Bushras-MacBook-Pro.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+make_plots                     1
+merge_zip                      1
+select_clean_rat               1
+select_clean_restaurant        1
+summary_and_corr               1
+total                          6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 01:56:58 2025]
+localrule select_clean_rat:
+    input: data/clean/Rat-cleaned(in).csv
+    output: data/clean/cleaned_rat.csv
+    jobid: 1
+    reason: Missing output files: data/clean/cleaned_rat.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+Select jobs to execute...
+[Tue Dec  9 01:57:00 2025]
+Finished jobid: 1 (Rule: select_clean_rat)
+1 of 6 steps (17%) done
+Execute 1 jobs...
+[Tue Dec  9 01:57:00 2025]
+localrule select_clean_restaurant:
+    input: data/clean/NYC-cleaned(in).csv
+    output: data/clean/cleaned_restaurant.csv
+    jobid: 2
+    reason: Missing output files: data/clean/cleaned_restaurant.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 01:57:03 2025]
+Finished jobid: 2 (Rule: select_clean_restaurant)
+2 of 6 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 01:57:03 2025]
+localrule merge_zip:
+    input: data/clean/cleaned_rat.csv, data/clean/cleaned_restaurant.csv
+    output: data/processed/merged_df.csv
+    jobid: 3
+    reason: Missing output files: data/processed/merged_df.csv; Input files updated by another job: data/clean/cleaned_rat.csv, data/clean/cleaned_restaurant.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 01:57:05 2025]
+Finished jobid: 3 (Rule: merge_zip)
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Dec  9 01:57:05 2025]
+localrule summary_and_corr:
+    input: data/processed/merged_df.csv
+    output: results/summary_stats.csv, results/corr_matrix.csv
+    jobid: 4
+    reason: Missing output files: results/summary_stats.csv, results/corr_matrix.csv; Input files updated by another job: data/processed/merged_df.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 01:57:05 2025]
+localrule make_plots:
+    input: data/processed/merged_df.csv
+    output: figures/rat_sightings_per_zip.png, figures/avg_score_by_zip.png, figures/rat_vs_critical.png, figures/distributions.png, figures/corr_heatmap.png, figures/rat_vs_avg_score.png
+    jobid: 5
+    reason: Missing output files: figures/distributions.png, figures/rat_vs_avg_score.png, figures/avg_score_by_zip.png, figures/corr_heatmap.png, figures/rat_sightings_per_zip.png, figures/rat_vs_critical.png; Input files updated by another job: data/processed/merged_df.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+RuleException:
+FileNotFoundError in file "/Users/bushralat/Desktop/IS477 Workflow/Snakefile", line 55:
+[Errno 2] No such file or directory: '/Users/bushralat/Desktop/IS477 Workflow/src/summary_and_corr.py'
+[Tue Dec  9 01:57:05 2025]
+Error in rule summary_and_corr:
+    message: None
+    jobid: 4
+    input: data/processed/merged_df.csv
+    output: results/summary_stats.csv, results/corr_matrix.csv
+Waiting at most 5 seconds for missing files:
+figures/distributions.png (missing locally)
+MissingOutputException in rule make_plots in file "/Users/bushralat/Desktop/IS477 Workflow/Snakefile", line 57:
+Job 5  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+figures/distributions.png (missing locally, parent dir contents: corr_heatmap.png, rat_sightings_per_zip.png, avg_score_by_zip.png, rat_vs_critical.png, rat_vs_avg_score.png)
+Removing output files of failed job make_plots since they might be corrupted:
+figures/rat_sightings_per_zip.png, figures/avg_score_by_zip.png, figures/rat_vs_critical.png, figures/corr_heatmap.png, figures/rat_vs_avg_score.png
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Dec  9 01:57:14 2025]
+Error in rule summary_and_corr:
+    message: None
+    jobid: 4
+    input: data/processed/merged_df.csv
+    output: results/summary_stats.csv, results/corr_matrix.csv
+[Tue Dec  9 01:57:14 2025]
+Error in rule make_plots:
+    message: None
+    jobid: 5
+    input: data/processed/merged_df.csv
+    output: figures/rat_sightings_per_zip.png, figures/avg_score_by_zip.png, figures/rat_vs_critical.png, figures/distributions.png, figures/corr_heatmap.png, figures/rat_vs_avg_score.png
+Complete log(s): /Users/bushralat/Desktop/IS477 Workflow/.snakemake/log/2025-12-09T015657.564154.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
