@@ -96,9 +96,9 @@ The workflow:
 1. Starts from **OpenRefine–cleaned data** packaged in `.zip` files
 2. Unzips and standardizes those cleaned files
 3. Selects relevant columns and drops incomplete rows
-4. Aggregates data by ZIP code and merges the two datasets (merged data found <a href="https://github.com/bushralat/TheFAIRies/tree/main/data/merged">here</a>.
-5. Produces summary statistics and a correlation matrix (found in this <a href="https://github.com/bushralat/TheFAIRies/tree/main/results">folder</a>
-6. Generates visual figures for analysis (found in this <a href="https://github.com/bushralat/TheFAIRies/tree/main/figures">folder</a>
+4. Aggregates data by ZIP code and merges the two datasets (merged data found <a href="https://github.com/bushralat/TheFAIRies/tree/main/data/merged">here</a>).
+5. Produces summary statistics and a correlation matrix (found in this <a href="https://github.com/bushralat/TheFAIRies/tree/main/results">folder</a>).
+6. Generates visual figures for analysis (found in this <a href="https://github.com/bushralat/TheFAIRies/tree/main/figures">folder</a>).
 
 ## Script Descriptions
 
