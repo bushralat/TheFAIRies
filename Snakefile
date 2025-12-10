@@ -19,9 +19,25 @@ rule all:
 # NOTE: the input "cleaned" datasets are exported from OpenRefine.
 #       (they are NOT created by Snakemake).
 
+rule unzip_rat:
+    input:
+        "data/clean/Rat-cleaned.zip"
+    output:
+        "data/clean/Rat-cleaned_in.csv"
+    shell:
+        "unzip -p {input} 'Rat-cleaned(in).csv' > {output}"
+
+rule unzip_restaurant:
+    input:
+        "data/clean/NYC-cleaned.zip"
+    output:
+        "data/clean/NYC-cleaned_in.csv"
+    shell:
+        "unzip -p {input} 'NYC-cleaned(in).csv' > {output}"
+
 rule select_clean_rat:
     input:
-        "data/clean/Rat-cleaned(in).csv"
+        "data/clean/Rat-cleaned_in.csv"
     output:
         "data/clean/cleaned_rat.csv"
     script:
@@ -29,7 +45,7 @@ rule select_clean_rat:
 
 rule select_clean_restaurant:
     input:
-        "data/clean/NYC-cleaned(in).csv"
+        "data/clean/NYC-cleaned_in.csv"
     output:
         "data/clean/cleaned_restaurant.csv"
     script:

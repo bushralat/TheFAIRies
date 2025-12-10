@@ -1,0 +1,8 @@
+Assuming unrestricted shared filesystem usage.
+host: Bushras-MacBook-Pro.local
+Building DAG of jobs...
+MissingInputException in rule select_clean_rat in file "/Users/bushralat/Desktop/TheFAIRies Workflow/Snakefile", line 22:
+Missing input files for rule select_clean_rat:
+    output: data/clean/cleaned_rat.csv
+    affected files:
+        data/clean/Rat-cleaned(in).csv

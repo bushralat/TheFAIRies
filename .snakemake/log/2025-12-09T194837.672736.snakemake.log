@@ -1,0 +1,113 @@
+Assuming unrestricted shared filesystem usage.
+host: Bushras-MacBook-Pro.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+make_plots                     1
+merge_zip                      1
+select_clean_rat               1
+select_clean_restaurant        1
+summary_and_findings           1
+unzip_rat                      1
+unzip_restaurant               1
+total                          8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 19:48:37 2025]
+localrule unzip_rat:
+    input: data/clean/Rat-cleaned.zip
+    output: data/clean/Rat-cleaned_in.csv
+    jobid: 2
+    reason: Missing output files: data/clean/Rat-cleaned_in.csv; Updated input files: data/clean/Rat-cleaned.zip
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 19:48:38 2025]
+Finished jobid: 2 (Rule: unzip_rat)
+1 of 8 steps (12%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 19:48:38 2025]
+localrule select_clean_rat:
+    input: data/clean/Rat-cleaned_in.csv
+    output: data/clean/cleaned_rat.csv
+    jobid: 1
+    reason: Missing output files: data/clean/cleaned_rat.csv; Input files updated by another job: data/clean/Rat-cleaned_in.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+Select jobs to execute...
+[Tue Dec  9 19:48:40 2025]
+Finished jobid: 1 (Rule: select_clean_rat)
+2 of 8 steps (25%) done
+Execute 1 jobs...
+[Tue Dec  9 19:48:40 2025]
+localrule unzip_restaurant:
+    input: data/clean/NYC-cleaned.zip
+    output: data/clean/NYC-cleaned_in.csv
+    jobid: 4
+    reason: Missing output files: data/clean/NYC-cleaned_in.csv; Updated input files: data/clean/NYC-cleaned.zip
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 19:48:41 2025]
+Finished jobid: 4 (Rule: unzip_restaurant)
+3 of 8 steps (38%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 19:48:41 2025]
+localrule select_clean_restaurant:
+    input: data/clean/NYC-cleaned_in.csv
+    output: data/clean/cleaned_restaurant.csv
+    jobid: 3
+    reason: Missing output files: data/clean/cleaned_restaurant.csv; Input files updated by another job: data/clean/NYC-cleaned_in.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 19:48:44 2025]
+Finished jobid: 3 (Rule: select_clean_restaurant)
+4 of 8 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 19:48:44 2025]
+localrule merge_zip:
+    input: data/clean/cleaned_rat.csv, data/clean/cleaned_restaurant.csv
+    output: data/merged/merged_df.csv
+    jobid: 5
+    reason: Missing output files: data/merged/merged_df.csv; Input files updated by another job: data/clean/cleaned_restaurant.csv, data/clean/cleaned_rat.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 19:48:45 2025]
+Finished jobid: 5 (Rule: merge_zip)
+5 of 8 steps (62%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Dec  9 19:48:45 2025]
+localrule summary_and_findings:
+    input: data/merged/merged_df.csv
+    output: results/summary_stats.csv, results/corr_matrix.csv
+    jobid: 6
+    reason: Input files updated by another job: data/merged/merged_df.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 19:48:45 2025]
+localrule make_plots:
+    input: data/merged/merged_df.csv
+    output: figures/rat_sightings_per_zip.png, figures/avg_score_by_zip.png, figures/rat_vs_critical.png, figures/corr_heatmap.png, figures/rat_vs_avg_score.png
+    jobid: 7
+    reason: Missing output files: figures/corr_heatmap.png, figures/avg_score_by_zip.png, figures/rat_vs_critical.png, figures/rat_vs_avg_score.png, figures/rat_sightings_per_zip.png; Input files updated by another job: data/merged/merged_df.csv
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 19:48:46 2025]
+Finished jobid: 6 (Rule: summary_and_findings)
+6 of 8 steps (75%) done
+[Tue Dec  9 19:48:48 2025]
+Finished jobid: 7 (Rule: make_plots)
+7 of 8 steps (88%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 19:48:48 2025]
+localrule all:
+    input: data/clean/cleaned_rat.csv, data/clean/cleaned_restaurant.csv, data/merged/merged_df.csv, results/summary_stats.csv, results/corr_matrix.csv, figures/rat_sightings_per_zip.png, figures/avg_score_by_zip.png, figures/rat_vs_critical.png, figures/corr_heatmap.png, figures/rat_vs_avg_score.png
+    jobid: 0
+    reason: Input files updated by another job: figures/corr_heatmap.png, figures/avg_score_by_zip.png, data/merged/merged_df.csv, figures/rat_vs_critical.png, data/clean/cleaned_rat.csv, results/corr_matrix.csv, figures/rat_vs_avg_score.png, results/summary_stats.csv, data/clean/cleaned_restaurant.csv, figures/rat_sightings_per_zip.png
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+[Tue Dec  9 19:48:48 2025]
+Finished jobid: 0 (Rule: all)
+8 of 8 steps (100%) done
+Complete log(s): /Users/bushralat/Desktop/TheFAIRies Workflow/.snakemake/log/2025-12-09T194837.672736.snakemake.log

@@ -1,0 +1,8 @@
+# Large generated CSVs – do not track
+data/clean/cleaned_restaurant.csv
+data/clean/cleaned_rat.csv
+
+# Generated outputs
+data/processed/
+results/
+figures/

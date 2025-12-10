@@ -1,0 +1,54 @@
+Assuming unrestricted shared filesystem usage.
+host: Bushras-MacBook-Pro.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+make_plots                     1
+merge_zip                      1
+select_clean_rat               1
+select_clean_restaurant        1
+summary_and_findings           1
+unzip_rat                      1
+unzip_restaurant               1
+total                          8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Dec  9 19:45:51 2025]
+localrule unzip_rat:
+    input: data/clean/Rat-cleaned.zip
+    output: data/clean/Rat-cleaned(in).csv
+    jobid: 2
+    reason: Missing output files: data/clean/Rat-cleaned(in).csv; Updated input files: data/clean/Rat-cleaned.zip
+    resources: tmpdir=/var/folders/7b/6wwyx3l14hg_t5khjl_5f9th0000gn/T
+RuleException:
+CalledProcessError in file "/Users/bushralat/Desktop/TheFAIRies Workflow/Snakefile", line 28:
+Command 'set -euo pipefail;  unzip -p data/clean/Rat-cleaned.zip 'Rat-cleaned(in).csv' > data/clean/Rat-cleaned(in).csv' returned non-zero exit status 2.
+[Tue Dec  9 19:45:51 2025]
+Error in rule unzip_rat:
+    message: None
+    jobid: 2
+    input: data/clean/Rat-cleaned.zip
+    output: data/clean/Rat-cleaned(in).csv
+    shell:
+        unzip -p data/clean/Rat-cleaned.zip 'Rat-cleaned(in).csv' > data/clean/Rat-cleaned(in).csv
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Dec  9 19:45:51 2025]
+Error in rule unzip_rat:
+    message: None
+    jobid: 2
+    input: data/clean/Rat-cleaned.zip
+    output: data/clean/Rat-cleaned(in).csv
+    shell:
+        unzip -p data/clean/Rat-cleaned.zip 'Rat-cleaned(in).csv' > data/clean/Rat-cleaned(in).csv
+        (command exited with non-zero exit code)
+Complete log(s): /Users/bushralat/Desktop/TheFAIRies Workflow/.snakemake/log/2025-12-09T194550.864541.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
